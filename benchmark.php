@@ -13,11 +13,13 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+// TODO : Finir la prise en charge EN
+
 set_time_limit(120);
 
 class BenchMark {
 
-    public  $version    = '0.0.1';
+    public  $version    = '0.0.1a';
 
     private $cfg        = null;
     private $db         = null;
@@ -37,7 +39,7 @@ class BenchMark {
             'over'      => .8,
             'overtips'  => array(
                 'fr'    => array(
-                    'label'     => 'Votre serveur web est trop lent.',
+                    'label'     => 'Votre serveur web semble trop lent.',
                     'solution'  => '<ul>
                                         <li>Passez en mode <a href="https://httpd.apache.org/docs/2.4/fr/mpm.html" target="_blank">multi-processus</a> si votre serveur est Apache ou passez à <a href="https://nginx.org/" target="_blank">NGinx</a>.</li>
                                         <li>Si votre moodle est installé sur votre poste de travail, vous pouvez désactiver votre antivirus sur le dossier Moodle avec précaution.</li>
@@ -282,11 +284,11 @@ class BenchMark {
         ),      // Relève le temps de connexion du compte guest
         'loginuser'     => array(
             'name'      => array(
-                'fr'    => 'Temps de connexion du compte invité',
-                'en'    => 'Time to connect with the guest account'
+                'fr'    => 'Temps de connexion du compte utilisateur',
+                'en'    => 'Time to connect with the user account'
             ),
             'moreinfo'  => array (
-                'fr'    => 'Mesure le temps de chargement de la page de connexion du compte invité',
+                'fr'    => 'Mesure le temps de chargement de la page de connexion du compte utilisateur',
                 'en'    => 'Measuring the time to load the login page with the guest account',
             ),
             'nbpass'    => 250,
@@ -294,13 +296,13 @@ class BenchMark {
             'over'      => .38,
             'overtips'  => array(
                 'fr'    => array(
-                    'label'     => 'La page est trop lente a chargé',
+                    'label'     => 'La page d\'identification utilisateur est trop lente a chargé',
                     'solution'  => '<ul>
                                         <li>Videz le cache de Moodle</li>
                                     </ul>'
                 ),
                 'en'    => array(
-                    'label'     => 'The login page is too slow.',
+                    'label'     => 'The login page for a user account is too slow.',
                     'solution'  => '<ul>
                                         <li>Clear the Moodle cache</a></li>
                                     </ul>'
@@ -309,38 +311,31 @@ class BenchMark {
         ),      // Relève le temps de connexion d'un compte utilisateur
     );
 
-    private $text = array(
-        'fr' => array(
-            'thanks' => 'N.B. : Les résultats et les conseils donnés par cet outil sont à titre indicatif.'
-        )
-    );
-
-    private $loader = <<<EOD
+    private $tpl_loader = <<<EOD
 <!doctype html>
 <html lang="{{lang}}">
     <head>
         <meta charset="utf-8">
         <title>BenchMark Moodle v{{version}}</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-        <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     </head>
     <body>
-        <div id="wrapper">
-            <div class="container">
-                <div class="page-header">
-                    <h1>BenchMark Moodle <small>{{version}}</small></h1>
-                </div>
-                <p>
-                    Ce benchmark doit avoir une durée inférieur à 1 minute et s'annule à 2 minutes.
-                    il va démarrer automatiquement dans <span id="countdown">10</span> secondes ou cliquer sur &laquo;Lancer le test&raquo;
-                </p>
-                <p>Merci de patienter jusqu'à l'affichage des résultats.</p>
+        <div class="container">
+            <div class="page-header">
+                <h1>BenchMark Moodle version <small>{{version}}</small></h1>
+            </div>
+            <p>
+                Ce benchmark doit avoir une durée inférieur à 1 minute et s'annule à 2 minutes.
+                il va démarrer automatiquement dans <span id="countdown">10</span> secondes ou cliquer sur &laquo;Lancer le test&raquo;
+            </p>
+            <p>Merci de patienter jusqu'à l'affichage des résultats.</p>
+            <div class="text-center">
                 <a href="?step=run" class="btn btn-primary">Lancer le test</a>
-                <p class="text-muted">{{thanks}}</p>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script language="javascript">
         var countdown = 10;
         $(document).ready(function() {
@@ -356,20 +351,123 @@ class BenchMark {
     </body>
 </html>
 EOD;
+    private $tpl_result = <<<EOD
+<!doctype html>
+<html lang="{{lang}}">
+    <head>
+        <meta charset="utf-8">
+        <title>BenchMark Moodle version {{version}}</title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <style>
+            h4 {
+                padding: 40px 0 15px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default hidden-print">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Moodle BenchMark version <small>{{version}}</small></a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="pull-right"><a href="?step=run" class="pull-right">Refaire le test</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        
+        <div class="container">
+       
+            <h3 id="score" class="text-center">Score du benchmark : <span class="text-success">{{score}} points</span></h3>
+            
+            <h4>Résultats des tests</h4>
+            <table class="table table-hover" id="result">
+                <thead>
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Description</th>
+                        <th class="text-center">Durée en secondes</th>
+                        <th class="text-center">Limite acceptable</th>
+                        <th class="text-center">Limite critique</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{results}}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="2" class="text-right">Temps total des tests</th>
+                        <th colspan="1" class="text-right">{{total}} sec.</th>
+                        <th colspan="2">&nbsp;</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2" class="text-right">Score</th>
+                        <th colspan="1" class="text-right">{{score}} points</th>
+                        <th colspan="2">&nbsp;</th>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <div id="tips">
+                {{tips}}
+            </div>
+            
+            <div class="text-center">
+                <a class="btn btn-primary" href="?step=run">Repasser le test</a>
+                <a class="btn btn-primary" href="javascript:void();" onclick="window.print();">Imprimer</a>
+            </div>
+
+        </div>
+        <script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </body>
+</html>
+EOD;
+    private $tpl_result_details = <<<EOD
+        <tr>
+            <td class="text-center">{{id}}</td>
+            <td>{{name}}</td>
+            <td class="text-center {{class}}">{{during}}</td>
+            <td class="text-center">{{limit}}</td>
+            <td class="text-center">{{over}}</td>
+        </tr>
+EOD;
 
     public function  __construct() {
 
         $lang       = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-        $this->lang = ($lang == 'fr' || $lang == 'en') ? $lang : 'fr';
+        $this->lang = 'fr'; //($lang == 'fr' || $lang == 'en') ? $lang : 'fr';
 
         if (empty($_GET['step'])) {
             $data = array(
                 'lang'      => $this->lang,
                 'version'   => $this->version
             );
-            echo $this->renderer($this->loader, $data);
+            echo $this->renderer($this->tpl_loader, $data);
         } elseif ($_GET['step'] == 'run') {
             $this->launching();
+
+            $total = $this->total();
+            $data = array(
+                'lang'      => $this->lang,
+                'version'   => $this->version,
+                'total'     => $total,
+                'score'     => ceil($total * 100),
+            );
+
+            $data['results']    = $this->results();
+            $data['tips']       = $this->tips();
+
+            echo $this->renderer($this->tpl_result, $data);
         }
 
     }
@@ -390,15 +488,58 @@ EOD;
             } else {
                 die('<pre>Method bench_'.$name.' not exist.</pre>');
             }
-            echo $name . ' -> ' . $this->tests[$name]['during'] . 'sec.<br />';
         }
     }
 
-    public function result() {
-        return $this->test;
+    private function results() {
+        $output = null;
+        $id     = 0;
+        foreach($this->tests as $name => $test) {
+            ++$id;
+            if ($test['during'] >= $test['over']) {
+                $class = 'danger';
+            } elseif ($test['during'] >= $test['limit']) {
+                $class = 'warning';
+            } else {
+                $class = 'success';
+            }
+            $data = array(
+                'id'        => $id,
+                'class'     => $class,
+                'name'      => $test['name'][$this->lang],
+                'during'    => $test['during'],
+                'limit'     => $test['limit'],
+                'over'      => $test['over'],
+            );
+            $output .= $this->renderer($this->tpl_result_details, $data);
+        }
+        return $output;
     }
 
-    // Test, must by named by the prefix test_ and added in the tests array
+    private function total() {
+        $total = 0;
+        foreach($this->tests as $test) {
+            $total += $test['during'];
+        }
+        return $total;
+    }
+
+    private function tips() {
+        $output = null;
+        foreach($this->tests as $test) {
+            if ($test['during'] >= $test['limit']) {
+                $output .= '<h5>' . $test['overtips'][$this->lang]['label'] . '</h5>' . $test['overtips'][$this->lang]['solution'];
+            }
+        }
+        if (empty($output)) {
+            $output .= '<div class="alert alert-success" role="alert"><b>Félicitations !</b><br />Votre Moodle semble fonctionner parfaitement.</div>';
+        } else {
+            $output = '<div class="alert alert-warning" role="alert"><b>Attention !</b><br />Votre Moodle semble rencontrer quelques difficultés.' . $output . '</div>';
+        }
+        return $output;
+    }
+
+    // Test, must by named by the prefix bench_ and added in the tests array
 
     private function bench_cload() {
         // Never delete this test !
@@ -415,7 +556,7 @@ EOD;
             ++$i;
         }
     }
-    
+
     private function bench_fileread($pass) {
         file_put_contents($this->cfg->tempdir.'/benchmark.temp', 'benchmark');
         $i = 0;
@@ -446,13 +587,13 @@ EOD;
     }
 
     private function bench_coursewrite($pass) {
-        $uniq 					= md5(uniqid(rand(), true));
-        $newrecord				= new stdClass;
-        $newrecord->shortname	= '!!!BENCH-'.$uniq;
-        $newrecord->fullname	= '!!!BENCH-'.$uniq;
-        $newrecord->format		= 'site';
-        $newrecord->visible		= 0;
-        $newrecord->sortorder	= 0;
+        $uniq                   = md5(uniqid(rand(), true));
+        $newrecord              = new stdClass;
+        $newrecord->shortname   = '!!!BENCH-'.$uniq;
+        $newrecord->fullname    = '!!!BENCH-'.$uniq;
+        $newrecord->format      = 'site';
+        $newrecord->visible     = 0;
+        $newrecord->sortorder   = 0;
         $i = 0;
         while($i < $pass) {
             ++$i;
@@ -470,7 +611,7 @@ EOD;
             $this->db->get_records_sql($sql);
         }
     }
-    
+
     private function bench_querytype2($pass) {
         $i = 0;
         $sql = "SELECT parent_states.filter, CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate, parent_states.inheritedstate FROM (SELECT f.filter, MAX(f.sortorder) AS sortorder, CASE WHEN MAX(f.active * ctx.depth) > -MIN(f.active * ctx.depth) THEN 1 ELSE -1 END AS inheritedstate FROM mdl_filter_active f JOIN mdl_context ctx ON f.contextid = ctx.id WHERE ctx.id IN (1,3,16) GROUP BY f.filter HAVING MIN(f.active) > -9999 ) parent_states LEFT JOIN mdl_filter_active fa ON fa.filter = parent_states.filter AND fa.contextid = 26 ORDER BY parent_states.sortorder;";
@@ -497,16 +638,16 @@ EOD;
     }
 
     private function bench_loginuser() {
-        $user 				= new stdClass();
-        $user->auth 		= 'manual';
-        $user->confirmed 	= 1;
-        $user->mnethostid 	= 1;
-        $user->email	 	= 'benchtest@benchtest.com';
-        $user->username 	= 'benchtest';
-        $user->password 	= md5('benchtest');
-        $user->lastname 	= 'benchtest';
-        $user->firstname 	= 'benchtest';
-        $user->id 			= $this->db->insert_record('user', $user);
+        $user               = new stdClass();
+        $user->auth         = 'manual';
+        $user->confirmed    = 1;
+        $user->mnethostid   = 1;
+        $user->email        = 'benchtest@benchtest.com';
+        $user->username     = 'benchtest';
+        $user->password     = md5('benchtest');
+        $user->lastname     = 'benchtest';
+        $user->firstname    = 'benchtest';
+        $user->id           = $this->db->insert_record('user', $user);
         $opts = array('http' =>
             array(
                 'method'  => 'POST',
@@ -523,6 +664,7 @@ EOD;
         $this->db->delete_records('user', array('id' => $user->id));
         unset($user);
     }
+
 }
 
 if (!file_exists('config.php')) {
