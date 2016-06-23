@@ -1,10 +1,8 @@
+![alt tag](https://github.com/mikasmart/moodlebenchmark/blob/master/screenshot.jpg)
+
 # Moodle Benchmark
 
 Performs various tests to determine the quality of the Moodle platform
-
-The project includes a local plugin for Moodle 3.0 or later, provided to help the administrator of the MoodleBox to monitor some hardware settings and allow restart and shutdown of the MoodleBox.
-
-The documentation is included in the plugin `doc` folder, as a LaTeX document (in french; sorry, no english version as of now, pull request highly desirable).
 
 ## Availability
 
