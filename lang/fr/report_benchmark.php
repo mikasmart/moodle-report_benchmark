@@ -8,8 +8,23 @@ $string['pluginname'] = 'Moodle  Benchmark';
 $string['modulenameplural'] = 'Moodle Benchmarks';
 $string['modulename'] = 'Moodle Benchmark';
 $string['adminreport'] = 'Benchmark du système';
-$string['release'] = 'N° ';
-$string['version'] ='Version : {$a}';
+$string['release'] = 'Mise à jour : {$a} ';
+$string['moodleversion'] ='N° de distribution : {$a}';
+$string['version'] ='Version {$a}';
+
+$string['titre'] = 'BenchMark Moodle version <small>{$a}</small>';
+$string['toggle'] = 'Toggle navigation';
+$string['total'] = '{$a} sec';
+$string['repasser'] = 'Repasser le test';
+$string['description'] = 'Description';
+$string['duree'] = 'Durée en secondes';
+$string['limiteacceptable'] = 'Limite acceptable';
+$string['limitecritique'] = 'Limite critique';
+$string['dureetotale'] = 'Temps total des tests';
+
+$string['felicitation'] = '<b>Félicitations !</b><br />Votre Moodle semble fonctionner parfaitement.';
+$string['alerte'] = '<b>Attention !</b><br />Votre Moodle semble rencontrer quelques difficultés :';
+
 
 $string['info'] = '<p>Ce benchmark doit avoir une durée inférieur à 1 minute et s\'annule à 2 minutes.
 <br />Il va démarrer automatiquement dans <span id="countdown">10</span> secondes ou cliquer sur &laquo;Lancer le test&raquo;</p>
@@ -95,7 +110,7 @@ $string['querytype2overtipssolution'] =  '<ul>
 
 
 // Relève le temps de connexion du compte guest
-$string['loginguestname'] = 'Temps de connexion du compte uinvité';
+$string['loginguestname'] = 'Temps de connexion du compte invité';
 $string['loginguestmoreinfo'] =  'Mesure le temps de chargement de la page de connexion du compte invité';
 $string['loginguestovertipslabel'] = 'La page d\'identification utilisateur est trop lente à charger.';
 $string['loginguestovertipssolution'] =  '<ul>
