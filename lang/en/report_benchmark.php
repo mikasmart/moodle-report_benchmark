@@ -8,8 +8,20 @@ $string['pluginname'] = 'Moodle  Benchmark';
 $string['modulenameplural'] = 'Moodle Benchmarks';
 $string['modulename'] = 'Moodle Benchmark';
 $string['adminreport'] = 'System Benchmark';
-$string['release'] = 'N° ';
-$string['version'] ='Version : ';
+$string['release'] = 'User friendly version: {$a} ';
+$string['moodleversion'] ='Moodle distribution number: {$a}';
+$string['version'] ='Version {$a}';
+
+$string['titre'] = 'BenchMark Moodle version <small>{$a}</small>';
+$string['toggle'] = 'Toggle navigation';
+$string['total'] = '{$a} sec';
+$string['repasser'] = 'Redo the test';
+
+$string['description'] = 'Description';
+$string['duree'] = 'Duration in seconds';
+$string['limiteacceptable'] = 'Acceptable limit';
+$string['limitecritique'] = 'Critical limit';
+$string['dureetotale'] = 'Total time of the tests';
 
 $string['info'] = '<p>This benchmark has to last no more than 1 minute; it stops à 2 minutes.
 <br />If you d\'nt click on &laquo;Startthe test&raquo; it will start in <span id="countdown">10</span> seconds.</p>
@@ -22,6 +34,8 @@ $string['score'] = 'Score';
 $string['points'] = ' {$a} points';
 $string['imprimer'] = 'Print';
 
+$string['felicitation'] = '<b>Congratulations!</b><br />Votre Moodle seems to work perfectly.';
+$string['alerte'] = '<b>Watch out! Your Moodle seems to meet some difficulties: ';
 
 
 // Chargement de Moodle

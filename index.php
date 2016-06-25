@@ -26,6 +26,7 @@
     require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
     require_once($CFG->libdir.'/adminlib.php');
     require_once(dirname(__FILE__).'/lib/lib.php');
+    require_once(dirname(__FILE__).'/version.php');
 
 /// Get all required strings
     $baseUrl='/report/benchmark/';
@@ -49,16 +50,17 @@
     $msg = '';
     // Version du module
     $s_version='';
-    if (!empty($module->release)) {
-        $s_version.= $module->release;
-    }
 
-    if (!empty($module->version)){
-        $s_version.= ' ('.get_string('release','report_benchmark').' '.$module->version.')'."\n";
+    if (!empty($plugin->release)){
+        $s_version.= ' <b>'.$plugin->release."</b>\n";
+    }
+    if (!empty($plugin->version)){
+        // 2009042600;  // The current module version (Date: YYYYMMDDXX)
+        $s_version.= ' (<i>'.get_string('moodleversion','report_benchmark',$plugin->version)."</i>)\n";
     }
 
     if ($s_version!=''){
-       $msg.= get_string('version', 'report_benchmark').'<br /><i>'.$s_version.'</i>'."\n";
+       $msg.= get_string('version', 'report_benchmark',$s_version)."\n";
     }
 
 

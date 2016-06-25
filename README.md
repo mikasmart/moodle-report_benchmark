@@ -4,12 +4,16 @@
 
 Performs various tests to determine the quality of the Moodle platform
 
+Tested with Moodle 2.9, 3.1
+
 ## Availability
 
 Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.com/mikasmart/moodlebenchmark).
 
 ### Release notes
 
+
+* 2016-06-25, version 0.0.1b (alpha): all stuff is now in ./moodle/report/benchmark
 * 2016-06-24, version 0.0.1a (alpha): Preview version - Alpha
 
 ## Installation
@@ -22,7 +26,7 @@ Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.
 
 * Go to "Site Administration> Notification"
 
-* Install new plugin as usual
+* Install the new plugin as usual
 
 ### French
 
@@ -60,7 +64,6 @@ Example : http://www.mymoodle.ltd/benchmark.php
 
 ### Roadmap
 
-- Language integration is not finished. I can't get the strings in the lib.php script. If anybody may help!
 - Add more test
 - Add sharing score on a global website
 - Add more language
