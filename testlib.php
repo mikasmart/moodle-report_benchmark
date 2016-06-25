@@ -31,12 +31,13 @@
  *
  *      public static function the_function_name() {
  *          echo 'foo';
- *          return array('limit' => .5, 'over' => .8);
+ *          return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_BLABLABLA);
  *      }
  *
  * 1) The function must return an array with attributes :
  *      (float) limit: Time limit too high but acceptable (orange)
  *      (float) over: Over time, the benchmark fail (red)
+ *      (def) fail: To display the good text if the test fail
  * 
  * 2) The function must have strings in language file "/lang/xy/report_benchmark.php"
  *
@@ -51,10 +52,16 @@ defined('MOODLE_INTERNAL') || die();
  * BenchMark Test
  */
 
+define('BENCHFAIL_SLOWSERVER',      'slowserver');
+define('BENCHFAIL_SLOWPROCESSOR',   'slowprocessor');
+define('BENCHFAIL_SLOWHARDDRIVE',   'slowharddrive');
+define('BENCHFAIL_SLOWDATABASE',    'slowdatabase');
+define('BENCHFAIL_SLOWWEB',         'slowweb');
+
 class benchmark_test extends benchmark {
 
     public static function cload() {
-        return array('limit' => .5, 'over' => .8, 'start' => BENCHSTART);
+        return array('limit' => .5, 'over' => .8, 'start' => BENCHSTART, 'fail' => BENCHFAIL_SLOWSERVER);
     }
 
     public static function processor() {
@@ -66,12 +73,10 @@ class benchmark_test extends benchmark {
             ++$i;
         }
 
-        return array('limit' => .5, 'over' => .8, 'fail' => );
+        return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWPROCESSOR);
     }
 
-
     public static function fileread() {
-
         global $CFG;
 
         file_put_contents($CFG->tempdir.'/benchmark.temp', 'benchmark');
@@ -83,32 +88,43 @@ class benchmark_test extends benchmark {
         }
         unlink($CFG->tempdir.'/benchmark.temp');
 
-        return array('limit' => .5, 'over' => .8);
+        return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
 
     }
-    
-    /*
 
-    private function filewrite($pass) {
-        $lorem      = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus felis, dignissim quis nisl sit amet, blandit suscipit lacus. Duis maximus, urna sed fringilla consequat, tellus ex sollicitudin ante, vitae posuere neque purus nec justo. Donec porta ipsum sed urna tempus, sit amet dictum lorem euismod. Phasellus vel erat a libero aliquet venenatis. Phasellus condimentum venenatis risus ut egestas. Morbi sit amet posuere orci, id tempor dui. Vestibulum eget sapien eget mauris eleifend ullamcorper. In finibus mauris id augue fermentum porta. Fusce dictum vestibulum justo eget malesuada. Nullam at tincidunt urna, nec ultrices velit. Nunc eget augue velit. Mauris sed rhoncus purus. Etiam aliquam urna ac nisl tristique, vitae tristique urna tincidunt. Vestibulum luctus nulla magna, non tristique risus rhoncus nec. Vestibulum vestibulum, nulla scelerisque congue molestie, dolor risus hendrerit velit, non malesuada nisi orci eget eros. Aenean interdum ut lectus quis semper. Curabitur viverra vitae augue id.';
+    public static function filewrite() {
+        global $CFG;
+
+        $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus felis, dignissim quis nisl sit amet, blandit suscipit lacus. Duis maximus, urna sed fringilla consequat, tellus ex sollicitudin ante, vitae posuere neque purus nec justo. Donec porta ipsum sed urna tempus, sit amet dictum lorem euismod. Phasellus vel erat a libero aliquet venenatis. Phasellus condimentum venenatis risus ut egestas. Morbi sit amet posuere orci, id tempor dui. Vestibulum eget sapien eget mauris eleifend ullamcorper. In finibus mauris id augue fermentum porta. Fusce dictum vestibulum justo eget malesuada. Nullam at tincidunt urna, nec ultrices velit. Nunc eget augue velit. Mauris sed rhoncus purus. Etiam aliquam urna ac nisl tristique, vitae tristique urna tincidunt. Vestibulum luctus nulla magna, non tristique risus rhoncus nec. Vestibulum vestibulum, nulla scelerisque congue molestie, dolor risus hendrerit velit, non malesuada nisi orci eget eros. Aenean interdum ut lectus quis semper. Curabitur viverra vitae augue id.';
         $loremipsum = str_repeat($lorem, 16);
         $i = 0;
+        $pass = 2000;
         while($i < $pass) {
             ++$i;
-            file_put_contents($this->cfg->tempdir.'/benchmark.temp', $loremipsum);
+            file_put_contents($CFG->tempdir.'/benchmark.temp', $loremipsum);
         }
-        unlink($this->cfg->tempdir.'/benchmark.temp');
+        unlink($CFG->tempdir.'/benchmark.temp');
+
+        return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
     }
 
-    private function courseread($pass) {
+    public static function courseread() {
+        global $DB;
+
         $i = 0;
+        $pass = 2000;
         while($i < $pass) {
             ++$i;
-            $this->db->get_record('course', array('id' => 1));
+            $DB->get_record('course', array('id' => 1));
         }
+
+        return array('limit' => .75, 'over' => 1, 'fail' => BENCHFAIL_SLOWDATABASE);
+
     }
 
-    private function coursewrite($pass) {
+    public static function coursewrite() {
+        global $DB;
+
         $uniq                   = md5(uniqid(rand(), true));
         $newrecord              = new stdClass;
         $newrecord->shortname   = '!!!BENCH-'.$uniq;
@@ -117,33 +133,51 @@ class benchmark_test extends benchmark {
         $newrecord->visible     = 0;
         $newrecord->sortorder   = 0;
         $i = 0;
+        $pass = 25;
         while($i < $pass) {
             ++$i;
-            $this->db->insert_record('course', $newrecord);
+            $DB->insert_record('course', $newrecord);
         }
-        $this->db->delete_records('course', array('shortname' => $newrecord->shortname));
+        $DB->delete_records('course', array('shortname' => $newrecord->shortname));
         unset($newrecord);
+
+        return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWDATABASE);
+
     }
 
-    private function querytype1($pass) {
+    public static function querytype1() {
+        global $DB;
+
         $i = 0;
         $sql = "SELECT bi.id,bp.id AS blockpositionid,bi.blockname,bi.parentcontextid,bi.showinsubcontexts,bi.pagetypepattern,bi.subpagepattern,bi.defaultregion,bi.defaultweight,COALESCE(bp.visible, 1) AS visible,COALESCE(bp.region, bi.defaultregion) AS region,COALESCE(bp.weight, bi.defaultweight) AS weight,bi.configdata, ctx.id AS ctxid, ctx.path AS ctxpath, ctx.depth AS ctxdepth, ctx.contextlevel AS ctxlevel, ctx.instanceid AS ctxinstance FROM mdl_block_instances bi JOIN mdl_block b ON bi.blockname = b.name LEFT JOIN mdl_block_positions bp ON bp.blockinstanceid = bi.id AND bp.contextid = '26' AND bp.pagetype = 'mod-forum-discuss' AND bp.subpage = '' LEFT JOIN mdl_context ctx ON (ctx.instanceid = bi.id AND ctx.contextlevel = '80') WHERE (bi.parentcontextid = '26' OR (bi.showinsubcontexts = 1 AND bi.parentcontextid IN ('16','3','1'))) AND bi.pagetypepattern IN ('mod-forum-discuss','mod-forum-discuss-*','mod-forum-*','mod-*','*') AND (bi.subpagepattern IS NULL OR bi.subpagepattern = '') AND (bp.visible = 1 OR bp.visible IS NULL) AND b.visible = 1 ORDER BY COALESCE(bp.region, bi.defaultregion),COALESCE(bp.weight, bi.defaultweight),bi.id;";
+        $pass = 100;
         while($i < $pass) {
             ++$i;
-            $this->db->get_records_sql($sql);
+            $DB->get_records_sql($sql);
         }
+
+        return array('limit' => .5, 'over' => .7, 'fail' => BENCHFAIL_SLOWDATABASE);
+
     }
 
-    private function querytype2($pass) {
+    public static function querytype2() {
+        global $DB;
+
         $i = 0;
         $sql = "SELECT parent_states.filter, CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate, parent_states.inheritedstate FROM (SELECT f.filter, MAX(f.sortorder) AS sortorder, CASE WHEN MAX(f.active * ctx.depth) > -MIN(f.active * ctx.depth) THEN 1 ELSE -1 END AS inheritedstate FROM mdl_filter_active f JOIN mdl_context ctx ON f.contextid = ctx.id WHERE ctx.id IN (1,3,16) GROUP BY f.filter HAVING MIN(f.active) > -9999 ) parent_states LEFT JOIN mdl_filter_active fa ON fa.filter = parent_states.filter AND fa.contextid = 26 ORDER BY parent_states.sortorder;";
+        $pass = 250;
         while($i < $pass) {
             ++$i;
-            $this->db->get_records_sql($sql);
+            $DB->get_records_sql($sql);
         }
+
+        return array('limit' => .3, 'over' => .5, 'fail' => BENCHFAIL_SLOWDATABASE);
+
     }
 
-    private function loginguest() {
+    public static function loginguest() {
+        global $CFG;
+
         $opts = array('http' =>
             array(
                 'method'  => 'POST',
@@ -156,10 +190,15 @@ class benchmark_test extends benchmark {
                 )
             )
         );
-        file_get_contents($this->cfg->wwwroot.'/login/index.php', false, stream_context_create($opts));
+        file_get_contents($CFG->wwwroot.'/login/index.php', false, stream_context_create($opts));
+
+        return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
+
     }
 
-    private function loginuser() {
+    public static function loginuser() {
+        global $CFG, $DB;
+
         $user               = new stdClass();
         $user->auth         = 'manual';
         $user->confirmed    = 1;
@@ -169,7 +208,7 @@ class benchmark_test extends benchmark {
         $user->password     = md5('benchtest');
         $user->lastname     = 'benchtest';
         $user->firstname    = 'benchtest';
-        $user->id           = $this->db->insert_record('user', $user);
+        $user->id           = $DB->insert_record('user', $user);
         $opts = array('http' =>
             array(
                 'method'  => 'POST',
@@ -182,10 +221,12 @@ class benchmark_test extends benchmark {
                 )
             )
         );
-        file_get_contents($this->cfg->wwwroot . '/login/index.php', false, stream_context_create($opts));
-        $this->db->delete_records('user', array('id' => $user->id));
+        file_get_contents($CFG->wwwroot . '/login/index.php', false, stream_context_create($opts));
+        $DB->delete_records('user', array('id' => $user->id));
         unset($user);
+
+        return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
+
     }
-    */
 
 }

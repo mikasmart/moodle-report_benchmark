@@ -29,6 +29,5 @@ if (!isset($plugin)) {
     $plugin = new stdClass();
 }
 $plugin->requires = 2011120500;  // Requires this Moodle version  2.0
-$plugin->version  = 2016062500;  // The current module version (Date: YYYYMMDDXX)
-$plugin->release  = '0.0.1b';
+$plugin->version  = 2016062507;  // The current module version (Date: YYYYMMDDXX)
 $plugin->component = 'report_benchmark'; // Full name of the plugin (used for diagnostics)
