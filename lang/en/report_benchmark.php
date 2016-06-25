@@ -4,6 +4,7 @@
 
 // Moodle 2
 $string['benchmark'] = 'Benchmark';
+$string['benchmark:view'] = 'View the Benchmark report';
 $string['pluginname'] = 'Moodle  Benchmark';
 $string['modulenameplural'] = 'Moodle Benchmarks';
 $string['modulename'] = 'Moodle Benchmark';

@@ -13,18 +13,35 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 /**
- * Settings for the benchmark report
+ * HTML rendering methods are defined here
  *
  * @package    report
  * @subpackage benchmark
  * @copyright  Mickaël Pannequin, mickael.pannequin@smartcanal.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+defined('MOODLE_INTERNAL') || die();
+/**
+ * Overview benchmark renderer
+ */
+class report_benchmark_renderer {
+    
+    public function launcher() {
+        $out  = $this->output->header();
+        $out .= $this->output->heading(get_string('adminreport', 'report_benchmark'));
 
-defined('MOODLE_INTERNAL') || die;
+        $out .= html_writer::tag('p', get_string('info', 'report_benchmark'));
+        $out .= html_writer::link(new moodle_url('/report/benchmark/index.php', array('step' => 'run')),
+                get_string('start', 'report_benchmark'), array('class' => 'btn btn-primary'));
 
-$ADMIN->add('reports', new admin_externalpage('reportbenchmark', get_string('benchmark', 'report_benchmark'), $CFG->wwwroot.'/report/benchmark/index.php', 'moodle/site:config'));
-// no report settings Moodle 2.2
-$settings = null;
+        $out .= $this->output->footer();
+        return $out;
+    }
+
+    public function display() {
+        $bench = new benchmark();
+        return $bench->results();
+    }
+    
+}

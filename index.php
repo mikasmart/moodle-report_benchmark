@@ -22,59 +22,33 @@
  * @copyright  Mickaël Pannequin, mickael.pannequin@smartcanal.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+    set_time_limit(120);
 
-    require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
-    require_once($CFG->libdir.'/adminlib.php');
-    require_once(dirname(__FILE__).'/lib/lib.php');
+    define('NO_OUTPUT_BUFFERING', true);
+    define('BENCHSTART', microtime(true));
 
-/// Get all required strings
-    $baseUrl='/report/benchmark/';
-    $reportCss=$baseUrl.'report_benchmark.css';
-    $bootstrapCss=$baseUrl.'bootstrap.css';
-    $base_url=$CFG->wwwroot.$baseUrl;
+// Required files
+    require_once('../../config.php');
+    require_once($CFG->libdir .'/adminlib.php');
+    require_once($CFG->dirroot.'/report/benchmark/lib.php');
+    require_once($CFG->dirroot.'/report/benchmark/testlib.php');
 
-    $strbenchmarks = get_string('modulenameplural', 'report_benchmark');
-    $strbenchmark  = get_string('modulename', 'report_benchmark');
+// Login and check capabilities
+    require_login();
+    require_capability('report/benchmark:view', context_system::instance());
 
+// Get the step
+    $step = optional_param('step', false, PARAM_TEXT);
 
-// Print the header & check permissions.
-    $url = new moodle_url($base_url.'index.php');
+// Set link & Layout
     admin_externalpage_setup('reportbenchmark');
-    $PAGE->set_url($url);
-    $PAGE->requires->css($bootstrapCss);
-    $PAGE->requires->css($reportCss);
-    echo $OUTPUT->header();
-    echo $OUTPUT->heading(get_string('adminreport', 'report_benchmark'));
+    $PAGE->set_url(new moodle_url('/report/benchmark/index.php'));
+    $PAGE->set_pagelayout('report');
 
-    $msg = '';
-    // Version du module
-    $s_version='';
-    if (!empty($module->release)) {
-        $s_version.= $module->release;
+// Display
+    $output = $PAGE->get_renderer('report_benchmark');
+    if (!$step) {
+        echo $output->launcher();
+    } else {
+        echo $output->display();
     }
-
-    if (!empty($module->version)){
-        $s_version.= ' ('.get_string('release','report_benchmark').' '.$module->version.')'."\n";
-    }
-
-    if ($s_version!=''){
-       $msg.= get_string('version', 'report_benchmark').'<br /><i>'.$s_version.'</i>'."\n";
-    }
-
-
-    if ($msg) {
-        echo $OUTPUT->box_start('generalbox boxwidthwide boxaligncenter centerpara');
-        echo $msg;
-        echo $OUTPUT->box_end();
-    }
-    /*******************
-    // Print it.
-    echo html_writer::table($table);
-    ************/
-
-    $Bench = new BenchMark();
-
-
-    // Footer.
-
-    echo $OUTPUT->footer();

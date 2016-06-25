@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Settings for the benchmark report
+ * Lib functions
  *
  * @package    report
  * @subpackage benchmark
@@ -24,7 +24,3 @@
  */
 
 defined('MOODLE_INTERNAL') || die;
-
-$ADMIN->add('reports', new admin_externalpage('reportbenchmark', get_string('benchmark', 'report_benchmark'), $CFG->wwwroot.'/report/benchmark/index.php', 'moodle/site:config'));
-// no report settings Moodle 2.2
-$settings = null;
