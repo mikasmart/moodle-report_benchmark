@@ -15,7 +15,11 @@
 
 // TODO : Finir la prise en charge EN
 
-set_time_limit(120);
+
+require_once(dirname(__FILE__).'/../../config.php');
+require_once($CFG->libdir.'/lib.php');
+
+set_time_limit(240);
 
 class BenchMark {
 
@@ -26,287 +30,115 @@ class BenchMark {
     private $lang       = null;
     private $tests      = array(
         'cload'         => array(
-            'name'      => array(
-                'fr'    => 'Chargement de Moodle',
-                'en'    => 'Moodle loading time'
-            ),
-            'moreinfo'  => array(
-                'fr'    => 'Exécute le fichier de configuration &laquo;config.php&raquo;',
-                'en'    => 'Run the configuration file &laquo;config.php&raquo;',
-            ),
+            'name'      => get_string('cloadname', 'report_benchmark'),  // CE CODE NE FONCTIONNE PAS ...
+            'moreinfo'  => get_string('cloadmoreinfo', 'report_benchmark'),
             'nbpass'    => false,
             'limit'     => .5,
             'over'      => .8,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'Votre serveur web semble trop lent.',
-                    'solution'  => '<ul>
-                                        <li>Passez en mode <a href="https://httpd.apache.org/docs/2.4/fr/mpm.html" target="_blank">multi-processus</a> si votre serveur est Apache ou passez à <a href="https://nginx.org/" target="_blank">NGinx</a>.</li>
-                                        <li>Si votre moodle est installé sur votre poste de travail, vous pouvez désactiver votre antivirus sur le dossier Moodle avec précaution.</li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'Your web server is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Set your Apache in <a href="https://httpd.apache.org/docs/2.4/en/mpm.html" target="_blank">multi-processing</a> mode or switch on <a href="https://nginx.org/" target="_blank">NGinx</a>.</li>
-                                        <li>If your Moodle is installed on your computer, you can desactivate your antivirus where Moodle is. Do it with precaution.</li>
-                                    </ul>'
-                )
+					'label' => get_string('cloadovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('cloadovertipssolution', 'report_benchmark')
             )
-        ),      // Chargement de Moodle
+		),
+        // Chargement de Moodle
         'processor'     => array(
-            'name'      => array(
-                'fr'    => 'Appel d\'une fonction en boucle',
-                'en'    => 'Function called many times'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Une fonction est appelée en boucle pour tester la rapidité du processeur',
-                'en'    => 'A function is called in a loop to test the processor speed',
-            ),
+            'name'      => get_string('processorname', 'report_benchmark'),
+            'moreinfo'  => get_string('processormoreinfo', 'report_benchmark'),
             'nbpass'    => 10000000,
             'limit'     => .5,
             'over'      => .8,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'Votre processeur semble trop lent.',
-                    'solution'  => '<ul>
-                                        <li>Vérifier que votre configuration matériel soit suffisante pour faire fonctionner Moodle.</li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'Your processor is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Check that the equipment is enough to run Moodle.</li>
-                                    </ul>'
-                )
+					'label' => get_string('processorovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('processorovertipssolution', 'report_benchmark')
             )
         ),      // Puissance de calcul processeur
         'fileread'      => array(
-            'name'      => array(
-                'fr'    => 'Lecture de fichiers',
-                'en'    => 'Reading files'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Test la vitesse de lecture du dossier temporaire de Moodle' ,
-                'en'    => 'Test the read speed in the Moodle\'s temporary folder',
-            ),
+            'name'      => get_string('filereadname', 'report_benchmark'),
+            'moreinfo'  => get_string('filereadmoreinfo', 'report_benchmark'),
+
             'nbpass'    => 2000,
             'limit'     => .6,
             'over'      => .8,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'Le disque dur semble trop lent',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez l\'état du disque / dossier temporaire</li>
-                                        <li>Changez de disque dur ou de répertoire temporaire</li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The harddrive is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez l\'état du disque / temp folder</li>
-                                        <li>Change your drive or the temporary folder</li>
-                                    </ul>'
-                )
+					'label' => get_string('filereadovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('filereadovertipssolution', 'report_benchmark')
             )
         ),      // Lecture sur disque du dossier temporaire
         'filewrite'     => array(
-            'name'      => array(
-                'fr'    => 'Création de fichiers',
-                'en'    => 'Creating files'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Test la vitesse d\'écriture du dossier temporaire de Moodle' ,
-                'en'    => 'Test the write speed in the Moodle\'s temporary folder',
-            ),
+            'name'      => get_string('filewritename', 'report_benchmark'),
+            'moreinfo'  => get_string('filewritemoreinfo', 'report_benchmark'),
             'nbpass'    => 2000,
             'limit'     => 1,
             'over'      => 1.25,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'Le disque dur semble trop lent',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez l\'état du disque / dossier temporaire</li>
-                                        <li>Changez de disque dur ou de répertoire temporaire</li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The harddrive is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez l\'état du disque / temp folder</li>
-                                        <li>Change your drive or the temporary folder</li>
-                                    </ul>'
-                )
+					'label' => get_string('filewriteovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('filewriteovertipssolution', 'report_benchmark')
             )
         ),      // Ecriture sur disque du dossier temporaire
         'courseread'    => array(
-            'name'      => array(
-                'fr'    => 'Lecture d\'un cours',
-                'en'    => 'Reading course'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Test la vitesse de la base de données pour lire un cours',
-                'en'    => 'Test the read speed to read a course',
-            ),
+            'name'      => get_string('coursereadname', 'report_benchmark'),
+            'moreinfo'  => get_string('coursereadmoreinfo', 'report_benchmark'),
             'nbpass'    => 500,
             'limit'     => .75,
             'over'      => 1,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'La base de données semble trop lente',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">l\'intégrité la base de données</a></li>
-                                        <li>Optimisez <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">la base de données</a></li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The database is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Check <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">the database integrity</a></li>
-                                        <li>Optimze <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">the database</a></li>
-                                    </ul>'
-                )
-            )
+					'label' => get_string('coursereadovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('coursereadovertipssolution', 'report_benchmark')
+
         ),      // Lecture d'un cours
         'coursewrite'   => array(
-            'name'      => array(
-                'fr'    => 'Ecriture d\'un cours',
-                'en'    => 'Writing course'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Test la vitesse de la base de données pour écrire un cours',
-                'en'    => 'Test the database speed to write a course',
-            ),
+            'name'      => get_string('coursewritename', 'report_benchmark'),
+            'moreinfo'  => get_string('coursewritemoreinfo', 'report_benchmark'),
             'nbpass'    => 25,
             'limit'     => 1,
             'over'      => 1.25,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'La base de données semble trop lente',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">l\'intégrité la base de données</a></li>
-                                        <li>Optimisez <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">la base de données</a></li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The database is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Check <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">the database integrity</a></li>
-                                        <li>Optimze <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">the database</a></li>
-                                    </ul>'
-                )
+					'label' => get_string('coursewriteovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('coursewriteovertipssolution', 'report_benchmark')
             )
         ),      // Ecriture d'un cours
         'querytype1'    => array(
-            'name'      => array(
-                'fr'    => 'Exécution d\'une requête complexe (n°1)',
-                'en'    => 'Complex request'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Test la vitesse de la base de données pour exécuter une requête complexe',
-                'en'    => 'Test the database speed to execute a complex request',
-            ),
+            'name'      => get_string('querytype1name', 'report_benchmark'),
+            'moreinfo'  => get_string('querytype1moreinfo', 'report_benchmark'),
             'nbpass'    => 100,
             'limit'     => .5,
             'over'      => .7,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'La base de données semble trop lente',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">l\'intégrité la base de données</a></li>
-                                        <li>Optimisez <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">la base de données</a></li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The database is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Check <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">the database integrity</a></li>
-                                        <li>Optimze <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">the database</a></li>
-                                    </ul>'
-                )
+					'label' => get_string('querytype1overtipslabel', 'report_benchmark'),
+                    'solution' => get_string('querytype1overtipssolution', 'report_benchmark')
             )
         ),      // Exécution d'une requete complexe n°1
         'querytype2'    => array(
-            'name'      => array(
-                'fr'    => 'Exécution d\'une requête complexe (n°2)',
-                'en'    => 'Complex request'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Test la vitesse de la base de données pour exécuter une requête complexe',
-                'en'    => 'Test the database speed to execute a complex request',
-            ),
+            'name'      => get_string('querytype2name', 'report_benchmark'),
+            'moreinfo'  => get_string('querytype2moreinfo', 'report_benchmark'),
             'nbpass'    => 250,
             'limit'     => .3,
             'over'      => .38,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'La base de données semble trop lente',
-                    'solution'  => '<ul>
-                                        <li>Vérifiez <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">l\'intégrité la base de données</a></li>
-                                        <li>Optimisez <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">la base de données</a></li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The database is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Check <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">the database integrity</a></li>
-                                        <li>Optimze <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">the database</a></li>
-                                    </ul>'
-                )
+					'label' => get_string('querytype2overtipslabel', 'report_benchmark'),
+                    'solution' => get_string('querytype2overtipssolution', 'report_benchmark')
             )
         ),      // Exécution d'une requete complexe n°2
         'loginguest'    => array(
-            'name'      => array(
-                'fr'    => 'Temps de connexion du compte invité',
-                'en'    => 'Time to connect with the guest account'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Mesure le temps de chargement de la page de connexion du compte invité',
-                'en'    => 'Measuring the time to load the login page with the guest account',
-            ),
+            'name'      => get_string('loginguestname', 'report_benchmark'),
+            'moreinfo'  => get_string('loginguestmoreinfo', 'report_benchmark'),
             'nbpass'    => 250,
             'limit'     => .3,
             'over'      => .38,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'La page est trop lente a chargé',
-                    'solution'  => '<ul>
-                                        <li>Videz le cache de Moodle</li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The login page is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Clear the Moodle cache</a></li>
-                                    </ul>'
-                )
+					'label' => get_string('loginguestovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('loginguestovertipssolution', 'report_benchmark')
             )
         ),      // Relève le temps de connexion du compte guest
         'loginuser'     => array(
-            'name'      => array(
-                'fr'    => 'Temps de connexion du compte utilisateur',
-                'en'    => 'Time to connect with the user account'
-            ),
-            'moreinfo'  => array (
-                'fr'    => 'Mesure le temps de chargement de la page de connexion du compte utilisateur',
-                'en'    => 'Measuring the time to load the login page with the guest account',
-            ),
+            'name'      => get_string('loginusername', 'report_benchmark'),
+            'moreinfo'  => get_string('loginusermoreinfo', 'report_benchmark'),
             'nbpass'    => 250,
             'limit'     => .3,
             'over'      => .38,
             'overtips'  => array(
-                'fr'    => array(
-                    'label'     => 'La page d\'identification utilisateur est trop lente a chargé',
-                    'solution'  => '<ul>
-                                        <li>Videz le cache de Moodle</li>
-                                    </ul>'
-                ),
-                'en'    => array(
-                    'label'     => 'The login page for a user account is too slow.',
-                    'solution'  => '<ul>
-                                        <li>Clear the Moodle cache</a></li>
-                                    </ul>'
-                )
+					'label' => get_string('loginuserovertipslabel', 'report_benchmark'),
+                    'solution' => get_string('loginuserovertipssolution', 'report_benchmark')
             )
         ),      // Relève le temps de connexion d'un compte utilisateur
     );
@@ -506,7 +338,7 @@ EOD;
             $data = array(
                 'id'        => $id,
                 'class'     => $class,
-                'name'      => $test['name'][$this->lang],
+                'name'      => $test['name'],
                 'during'    => $test['during'],
                 'limit'     => $test['limit'],
                 'over'      => $test['over'],
@@ -528,7 +360,7 @@ EOD;
         $output = null;
         foreach($this->tests as $test) {
             if ($test['during'] >= $test['limit']) {
-                $output .= '<h5>' . $test['overtips'][$this->lang]['label'] . '</h5>' . $test['overtips'][$this->lang]['solution'];
+                $output .= '<h5>' . $test['overtips']['label'] . '</h5>' . $test['overtips']['solution'];
             }
         }
         if (empty($output)) {
@@ -543,8 +375,12 @@ EOD;
 
     private function bench_cload() {
         // Never delete this test !
-        $CFG = $DB = null;
-        require 'config.php';
+        // $CFG = $DB = null;
+        // require 'config.php';
+        // require_once(dirname(__FILE__).'/../../config.php');
+		global $CFG;
+		global $DB;
+
         $this->cfg  = $CFG;
         $this->db   = $DB;
     }
@@ -667,8 +503,14 @@ EOD;
 
 }
 
+/*
+// MODIF JF
 if (!file_exists('config.php')) {
     die('Merci de copier ce fichier à la racine du Moodle où se trouve config.php');
 }
 
+
+
 $Bench = new BenchMark();
+
+******/
