@@ -147,7 +147,7 @@ class benchmark_test extends benchmark {
         global $DB;
 
         $i      = 0;
-        $pass   = 2000;
+        $pass   = 500;
         while($i < $pass) {
             ++$i;
             $DB->get_record('course', array('id' => 1));
