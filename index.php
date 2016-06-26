@@ -20,7 +20,7 @@
  * @subpackage benchmark
  * @copyright  Mickaël Pannequin, mickael.pannequin@smartcanal.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @link       https://github.com/mikasmart/moodlebenchmark Source on GitHub
+ * @link       https://github.com/mikasmart/benchmark Source on GitHub
  *
  */
 

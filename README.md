@@ -1,4 +1,4 @@
-![alt tag](https://github.com/mikasmart/moodlebenchmark/blob/master/screenshot.jpg)
+![alt tag](https://github.com/mikasmart/benchmark/blob/master/screenshot.jpg)
 
 # Moodle Benchmark
 
@@ -8,7 +8,7 @@ Tested with Moodle 2.9, 3.1
 
 ## Availability
 
-Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.com/mikasmart/moodlebenchmark).
+Code available at [https://github.com/mikasmart/benchmark](https://github.com/mikasmart/benchmark).
 
 ### Release notes
 
@@ -27,8 +27,8 @@ Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.
 * Install the new plugin as usual
 
 ####automatic
-* [Download the zip](https://github.com/mikasmart/moodlebenchmark/archive/master.zip)
-* Open the Zip and rename the folder *moodlebenchmark-master* in *benchmark*
+* [Download the zip](https://github.com/mikasmart/benchmark/archive/master.zip)
+* Open the Zip and rename the folder *benchmark-master* in *benchmark*
 * Logon as admin on your Moodle server
 * go to "Site Administration > Plugins > Install plugins"
 * Put the zip file i, *ZIP package*
@@ -44,8 +44,8 @@ Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.
 * Installez le nouveau plugin comme d'habitude
 
 ####automatiquement
-* [Télécharger le zip](https://github.com/mikasmart/moodlebenchmark/archive/master.zip)
-* Ouvrir le Zip et renommer le dossier *moodlebenchmark-master* en *benchmark*
+* [Télécharger le zip](https://github.com/mikasmart/benchmark/archive/master.zip)
+* Ouvrir le Zip et renommer le dossier *benchmark-master* en *benchmark*
 * Logez-vous comme administrateur
 * Allez à "Administration du site > Plugins > Installer des plugins"
 * Placer le zip dans la zone *Paquetage ZIP*
