@@ -1,23 +1,23 @@
 <?php
 
 $string['benchmark']        = 'Benchmark';
-$string['benchmark:view']   = 'Voir le rapport Benchmark';
+$string['benchmark:view']   = 'View the report Benchmark';
 $string['pluginname']       = 'Moodle Benchmark';
 $string['modulenameplural'] = 'Moodle Benchmarks';
 $string['modulename']       = 'Moodle Benchmark';
 $string['adminreport']      = 'System Benchmark';
 $string['info']             = 'This benchmark has to last no more than 1 minute; it stops at 2 minutes. Thanks to wait until results show on.';
-$string['infoaverage']      = 'We invite you to take this test several times to obetenir average.';
+$string['infoaverage']      = 'We invite you to take this test several times to have the average.';
 $string['infodisclamer']    = 'It isn\'t advisable to run this benchmark on a platform in production.';
 $string['start']            = 'Start the test';
 $string['redo']             = 'Start the test again';
 $string['scoremsg']         = 'Bechmark Score :';
 $string['points']           = ' {$a} points';
 $string['description']      = 'Description';
-$string['during']           = 'Durée en secondes';
-$string['limit']            = 'Limite acceptable';
-$string['over']             = 'Limite critique';
-$string['total']            = 'Temps total des tests';
+$string['during']           = 'Time in seconds';
+$string['limit']            = 'Acceptable limit';
+$string['over']             = 'Critical limit';
+$string['total']            = 'Total time';
 $string['score']            = 'Score';
 $string['seconde']          = ' {$a} sec.';
 $string['benchsuccess']     = '<b>Congratulations!</b><br />Your Moodle seems to work perfectly.';
