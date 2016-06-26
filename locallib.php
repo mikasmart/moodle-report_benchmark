@@ -47,14 +47,19 @@ class benchmark {
             // Inistialize and execute the test
             $start  = microtime(true);
             $result = $this->start_test($name);
+
+            // Populate if empty result
             empty($result['limit']) ? $result['limit'] = 0 : null;
             empty($result['over'])  ? $result['over'] = 0 : null;
+
+            // Overwrite the result if start/stop if defined
             $over_start = isset($result['start']) ? $result['start'] : $start;
-            $stop = round(microtime(true) - $over_start, 4);
+            $over_stop  = isset($result['stop'])  ? $result['stop']  : microtime(true);
+            $stop       = round($over_stop - $over_start, 3);
 
             // Store and merge result
             $benchs[$name] = array(
-                    'during'    => round(microtime(true) - $over_start, 3),
+                    'during'    => $stop,
                     'id'        => $idtest,
                     'class'     => $this->get_feedback_class($stop, $result['limit'], $result['over']),
                     'name'      => get_string($name.'name', 'report_benchmark'),

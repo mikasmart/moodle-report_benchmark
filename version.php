@@ -32,7 +32,7 @@ defined('MOODLE_INTERNAL') || die;
 
 // Plugin informations
     $plugin->requires   = 2011120500; // Requires this Moodle version  2.0
-    $plugin->version    = 2016062602; // The current module version (Date: YYYYMMDDXX)
+    $plugin->version    = 2016062603; // The current module version (Date: YYYYMMDDXX)
     $plugin->component  = 'report_benchmark'; // Full name of the plugin (used for diagnostics)
     $plugin->maturity   = MATURITY_BETA;
-    $plugin->release    = 'v0.9.1-r2';
+    $plugin->release    = 'v0.9.1-r3';

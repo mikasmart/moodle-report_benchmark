@@ -24,13 +24,18 @@
  *
  */
 
+
+// Timeout at 2 minutes
     set_time_limit(120);
 
     define('NO_OUTPUT_BUFFERING', true);
+
+// Required config and set markers for the 1st test
     define('BENCHSTART', microtime(true));
+    require_once('../../config.php');
+    define('BENCHSTOP', microtime(true));
 
 // Required files
-    require_once('../../config.php');
     require_once($CFG->libdir .'/adminlib.php');
     require_once($CFG->dirroot.'/report/benchmark/locallib.php');
     require_once($CFG->dirroot.'/report/benchmark/testlib.php');

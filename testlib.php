@@ -73,7 +73,13 @@ class benchmark_test extends benchmark {
      */
     public static function cload() {
 
-        return array('limit' => .5, 'over' => .8, 'start' => BENCHSTART, 'fail' => BENCHFAIL_SLOWSERVER);
+        return array(
+            'limit' => .5,
+            'over'  => .8,
+            'start' => BENCHSTART,
+            'stop'  => BENCHSTOP,
+            'fail'  => BENCHFAIL_SLOWSERVER
+        );
 
     }
 

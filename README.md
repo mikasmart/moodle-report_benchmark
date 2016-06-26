@@ -4,7 +4,7 @@
 
 Performs various tests to determine the quality of the Moodle platform
 
-Tested with Moodle 2.9, 3.1
+Tested with Moodle 2.9, 3.0, 3.1
 
 ## Availability
 
@@ -12,6 +12,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 
 ### Release notes
 
+* 2016-06-26, version v0.9-r3 (beta): Pre-production version
 * 2016-06-26, version v0.9-r1 (beta): Preview version - Beta
 * 2016-06-25, version 0.0.1b (alpha): all stuff is now in ./moodle/report/benchmark
 * 2016-06-24, version 0.0.1a (alpha): Preview version - Alpha
@@ -23,7 +24,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 * Clone or download the ***master*** *branch* directly on your  ./moodle/report directory server
 * Rename it to benchmark
 * Logon as admin on your Moodle server
-* Go to "Site Administration> Notification"
+* Go to "Site Administration > Notification"
 * Install the new plugin as usual
 
 ####automatic
