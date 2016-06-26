@@ -18,27 +18,42 @@ Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.
 
 ## Installation
 ### English
-* Clone or download the ***report-version*** *branch* directly on your  ./moodle/report directory server
 
+####manually
+* Clone or download the ***master*** *branch* directly on your  ./moodle/report directory server
 * Rename it to benchmark
-
 * Logon as admin on your Moodle server
-
 * Go to "Site Administration> Notification"
-
 * Install the new plugin as usual
+
+####automatic
+* [Download the zip](https://github.com/mikasmart/moodlebenchmark/archive/master.zip)
+* Logon as admin on your Moodle server
+* go to "Site Administration > Plugins > Install plugins"
+* Put the zip file i, *ZIP package*
+* Cliquer sur *Show more...*
+* In *Plugin type*, choose *Site report*
+* In *Rename the root directory*, set **benchmark**
+* Clic on *Install plugin from the ZIP file*
 
 ### French
 
-* Cloner ou télécharger *la branche* ***report-version*** directement vers le dossier ./moodle/report de votre serveur
-
+####manuellement
+* Cloner ou télécharger *la branche* ***master*** directement vers le dossier ./moodle/report de votre serveur
 * Renommez-le benchmark
-
 * Logez-vous comme administrateur
-
 * Allez à "Administration du site > Notification"
-
 * Installez le nouveau plugin comme d'habitude
+
+####automatiquement
+* [Télécharger le zip](https://github.com/mikasmart/moodlebenchmark/archive/master.zip)
+* Logez-vous comme administrateur
+* Allez à "Administration du site > Plugins > Installer des plugins"
+* Placer le zip dans la zone *Paquetage ZIP*
+* Cliquer sur *Afficher plus...*
+* Dans *Type de plugin*, choisir *Rapport de site*
+* Dans *Renommer le dossier principal*, indiquer **benchmark**
+* Cliquer sur *Installer le plugin à partir du fichier Zip*
 
 ## Usage
 
