@@ -28,12 +28,10 @@ Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.
 
 ####automatic
 * [Download the zip](https://github.com/mikasmart/moodlebenchmark/archive/master.zip)
+* Open the Zip and rename the folder *moodlebenchmark-master* in *benchmark*
 * Logon as admin on your Moodle server
 * go to "Site Administration > Plugins > Install plugins"
 * Put the zip file i, *ZIP package*
-* Cliquer sur *Show more...*
-* In *Plugin type*, choose *Site report*
-* In *Rename the root directory*, set **benchmark**
 * Clic on *Install plugin from the ZIP file*
 
 ### French
@@ -47,12 +45,10 @@ Code available at [https://github.com/mikasmart/moodlebenchmark](https://github.
 
 ####automatiquement
 * [Télécharger le zip](https://github.com/mikasmart/moodlebenchmark/archive/master.zip)
+* Ouvrir le Zip et renommer le dossier *moodlebenchmark-master* en *benchmark*
 * Logez-vous comme administrateur
 * Allez à "Administration du site > Plugins > Installer des plugins"
 * Placer le zip dans la zone *Paquetage ZIP*
-* Cliquer sur *Afficher plus...*
-* Dans *Type de plugin*, choisir *Rapport de site*
-* Dans *Renommer le dossier principal*, indiquer **benchmark**
 * Cliquer sur *Installer le plugin à partir du fichier Zip*
 
 ## Usage
@@ -82,7 +78,7 @@ Logez-vous comme Administrateur, allez à "Administration du site > Rapports > B
 
 * To the [Moodle community](https://moodle.org/)
 * To Nicolas Martignoni, for help, time and perspective
-* To Jean FRUITET, for giving us Moodle
+* To Jean FRUITET, for help, time and traduction
 * To [Martin Dougiamas](https://en.wikipedia.org/wiki/Martin_Dougiamas), for giving us Moodle
 
 ## License
