@@ -13,15 +13,17 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
 /**
- * The benchmark report
+ * The BenchMark report
  *
  * @package    report
  * @subpackage benchmark
  * @copyright  Mickaël Pannequin, mickael.pannequin@smartcanal.com
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @link       https://github.com/mikasmart/moodlebenchmark Source on GitHub
+ *
  */
+
     set_time_limit(120);
 
     define('NO_OUTPUT_BUFFERING', true);
@@ -45,7 +47,7 @@
     $PAGE->set_url(new moodle_url('/report/benchmark/index.php'));
     $PAGE->set_pagelayout('report');
 
-// Display
+// Rendering
     $output = $PAGE->get_renderer('report_benchmark');
     if (!$step) {
         echo $output->launcher();

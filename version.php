@@ -24,10 +24,15 @@
  */
 
 defined('MOODLE_INTERNAL') || die;
-if (!isset($plugin)) {
-    // Avoid warning message in M2.5 and below.
-    $plugin = new stdClass();
-}
-$plugin->requires = 2011120500;  // Requires this Moodle version  2.0
-$plugin->version  = 2016062507;  // The current module version (Date: YYYYMMDDXX)
-$plugin->component = 'report_benchmark'; // Full name of the plugin (used for diagnostics)
+
+// Avoid warning message in M2.5 and below.
+    if (!isset($plugin)) {
+        $plugin = new stdClass();
+    }
+
+// Plugin informations
+    $plugin->requires   = 2011120500; // Requires this Moodle version  2.0
+    $plugin->version    = 2016062600; // The current module version (Date: YYYYMMDDXX)
+    $plugin->maturity   = MATURITY_BETA;
+    $plugin->release    = 'v0.9-r1';
+    $plugin->component  = 'report_benchmark'; // Full name of the plugin (used for diagnostics)

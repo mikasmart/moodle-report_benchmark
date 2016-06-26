@@ -22,6 +22,16 @@
 	vertical-align: middle;
 }
 
+#benchmarkresult td.success{
+	background-color: #dff0d8;
+}
+#benchmarkresult td.warning {
+	background-color: #fcf8e3;
+}
+#benchmarkresult td.danger {
+	background-color: #f2dede;
+}
+
 #benchmarkresult .cell.c1 small {
 	color: #888;
 }
@@ -35,16 +45,6 @@
 #benchmarkresult .c3,
 #benchmarkresult .c4 {
 	text-align: center;
-}
-
-#benchmarkresult td.success{
-	background-color: #dff0d8;
-}
-#benchmarkresult td.warning {
-	background-color: #fcf8e3;
-}
-#benchmarkresult td.danger {
-	background-color: #f2dede;
 }
 
 #benchmarkresult .footer td {

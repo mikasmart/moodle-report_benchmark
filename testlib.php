@@ -35,9 +35,9 @@
  *      }
  *
  * 1) The function must return an array with attributes :
- *      (float) limit: Time limit too high but acceptable (orange)
- *      (float) over: Over time, the benchmark fail (red)
- *      (def) fail: To display the good text if the test fail
+ *      (float)  limit: Time limit too high but acceptable (orange)
+ *      (float)  over : Over time, the benchmark fail (red)
+ *      (define) fail : To display the good text if the test fail
  * 
  * 2) The function must have strings in language file "/lang/xy/report_benchmark.php"
  *
@@ -46,24 +46,42 @@
  * 
  *
  */
+
 defined('MOODLE_INTERNAL') || die();
 
 /**
  * BenchMark Test
  */
 
+// Define to join the language pack
 define('BENCHFAIL_SLOWSERVER',      'slowserver');
 define('BENCHFAIL_SLOWPROCESSOR',   'slowprocessor');
 define('BENCHFAIL_SLOWHARDDRIVE',   'slowharddrive');
 define('BENCHFAIL_SLOWDATABASE',    'slowdatabase');
 define('BENCHFAIL_SLOWWEB',         'slowweb');
 
+/**
+ * Tests for the BenchMark report
+ *
+ */
 class benchmark_test extends benchmark {
 
+    /**
+     * Moodle loading time
+     *
+     * @return array Contains the test results
+     */
     public static function cload() {
+
         return array('limit' => .5, 'over' => .8, 'start' => BENCHSTART, 'fail' => BENCHFAIL_SLOWSERVER);
+
     }
 
+    /**
+     * Function called many times
+     *
+     * @return array Contains the test results
+     */
     public static function processor() {
 
         $pass = 10000000;
@@ -74,14 +92,20 @@ class benchmark_test extends benchmark {
         }
 
         return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWPROCESSOR);
+
     }
 
+    /**
+     * Reading files in the Moodle's temporary folder
+     *
+     * @return array Contains the test results
+     */
     public static function fileread() {
         global $CFG;
 
         file_put_contents($CFG->tempdir.'/benchmark.temp', 'benchmark');
-        $i = 0;
-        $pass = 2000;
+        $i      = 0;
+        $pass   = 2000;
         while($i < $pass) {
             ++$i;
             file_get_contents($CFG->tempdir.'/benchmark.temp');
@@ -92,13 +116,18 @@ class benchmark_test extends benchmark {
 
     }
 
+    /**
+     * Creating files in the Moodle's temporary folder
+     *
+     * @return array Contains the test results
+     */
     public static function filewrite() {
         global $CFG;
 
-        $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus felis, dignissim quis nisl sit amet, blandit suscipit lacus. Duis maximus, urna sed fringilla consequat, tellus ex sollicitudin ante, vitae posuere neque purus nec justo. Donec porta ipsum sed urna tempus, sit amet dictum lorem euismod. Phasellus vel erat a libero aliquet venenatis. Phasellus condimentum venenatis risus ut egestas. Morbi sit amet posuere orci, id tempor dui. Vestibulum eget sapien eget mauris eleifend ullamcorper. In finibus mauris id augue fermentum porta. Fusce dictum vestibulum justo eget malesuada. Nullam at tincidunt urna, nec ultrices velit. Nunc eget augue velit. Mauris sed rhoncus purus. Etiam aliquam urna ac nisl tristique, vitae tristique urna tincidunt. Vestibulum luctus nulla magna, non tristique risus rhoncus nec. Vestibulum vestibulum, nulla scelerisque congue molestie, dolor risus hendrerit velit, non malesuada nisi orci eget eros. Aenean interdum ut lectus quis semper. Curabitur viverra vitae augue id.';
+        $lorem      = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus felis, dignissim quis nisl sit amet, blandit suscipit lacus. Duis maximus, urna sed fringilla consequat, tellus ex sollicitudin ante, vitae posuere neque purus nec justo. Donec porta ipsum sed urna tempus, sit amet dictum lorem euismod. Phasellus vel erat a libero aliquet venenatis. Phasellus condimentum venenatis risus ut egestas. Morbi sit amet posuere orci, id tempor dui. Vestibulum eget sapien eget mauris eleifend ullamcorper. In finibus mauris id augue fermentum porta. Fusce dictum vestibulum justo eget malesuada. Nullam at tincidunt urna, nec ultrices velit. Nunc eget augue velit. Mauris sed rhoncus purus. Etiam aliquam urna ac nisl tristique, vitae tristique urna tincidunt. Vestibulum luctus nulla magna, non tristique risus rhoncus nec. Vestibulum vestibulum, nulla scelerisque congue molestie, dolor risus hendrerit velit, non malesuada nisi orci eget eros. Aenean interdum ut lectus quis semper. Curabitur viverra vitae augue id.';
         $loremipsum = str_repeat($lorem, 16);
-        $i = 0;
-        $pass = 2000;
+        $i          = 0;
+        $pass       = 2000;
         while($i < $pass) {
             ++$i;
             file_put_contents($CFG->tempdir.'/benchmark.temp', $loremipsum);
@@ -106,13 +135,19 @@ class benchmark_test extends benchmark {
         unlink($CFG->tempdir.'/benchmark.temp');
 
         return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
+
     }
 
+    /**
+     * Reading course
+     *
+     * @return array Contains the test results
+     */
     public static function courseread() {
         global $DB;
 
-        $i = 0;
-        $pass = 2000;
+        $i      = 0;
+        $pass   = 2000;
         while($i < $pass) {
             ++$i;
             $DB->get_record('course', array('id' => 1));
@@ -122,6 +157,11 @@ class benchmark_test extends benchmark {
 
     }
 
+    /**
+     * Writing course
+     *
+     * @return array Contains the test results
+     */
     public static function coursewrite() {
         global $DB;
 
@@ -132,8 +172,9 @@ class benchmark_test extends benchmark {
         $newrecord->format      = 'site';
         $newrecord->visible     = 0;
         $newrecord->sortorder   = 0;
-        $i = 0;
-        $pass = 25;
+
+        $i      = 0;
+        $pass   = 25;
         while($i < $pass) {
             ++$i;
             $DB->insert_record('course', $newrecord);
@@ -145,12 +186,17 @@ class benchmark_test extends benchmark {
 
     }
 
+    /**
+     * Complex request (n°1)
+     *
+     * @return array Contains the test results
+     */
     public static function querytype1() {
         global $DB;
 
-        $i = 0;
-        $sql = "SELECT bi.id,bp.id AS blockpositionid,bi.blockname,bi.parentcontextid,bi.showinsubcontexts,bi.pagetypepattern,bi.subpagepattern,bi.defaultregion,bi.defaultweight,COALESCE(bp.visible, 1) AS visible,COALESCE(bp.region, bi.defaultregion) AS region,COALESCE(bp.weight, bi.defaultweight) AS weight,bi.configdata, ctx.id AS ctxid, ctx.path AS ctxpath, ctx.depth AS ctxdepth, ctx.contextlevel AS ctxlevel, ctx.instanceid AS ctxinstance FROM mdl_block_instances bi JOIN mdl_block b ON bi.blockname = b.name LEFT JOIN mdl_block_positions bp ON bp.blockinstanceid = bi.id AND bp.contextid = '26' AND bp.pagetype = 'mod-forum-discuss' AND bp.subpage = '' LEFT JOIN mdl_context ctx ON (ctx.instanceid = bi.id AND ctx.contextlevel = '80') WHERE (bi.parentcontextid = '26' OR (bi.showinsubcontexts = 1 AND bi.parentcontextid IN ('16','3','1'))) AND bi.pagetypepattern IN ('mod-forum-discuss','mod-forum-discuss-*','mod-forum-*','mod-*','*') AND (bi.subpagepattern IS NULL OR bi.subpagepattern = '') AND (bp.visible = 1 OR bp.visible IS NULL) AND b.visible = 1 ORDER BY COALESCE(bp.region, bi.defaultregion),COALESCE(bp.weight, bi.defaultweight),bi.id;";
-        $pass = 100;
+        $i      = 0;
+        $sql    = "SELECT bi.id,bp.id AS blockpositionid,bi.blockname,bi.parentcontextid,bi.showinsubcontexts,bi.pagetypepattern,bi.subpagepattern,bi.defaultregion,bi.defaultweight,COALESCE(bp.visible, 1) AS visible,COALESCE(bp.region, bi.defaultregion) AS region,COALESCE(bp.weight, bi.defaultweight) AS weight,bi.configdata, ctx.id AS ctxid, ctx.path AS ctxpath, ctx.depth AS ctxdepth, ctx.contextlevel AS ctxlevel, ctx.instanceid AS ctxinstance FROM mdl_block_instances bi JOIN mdl_block b ON bi.blockname = b.name LEFT JOIN mdl_block_positions bp ON bp.blockinstanceid = bi.id AND bp.contextid = '26' AND bp.pagetype = 'mod-forum-discuss' AND bp.subpage = '' LEFT JOIN mdl_context ctx ON (ctx.instanceid = bi.id AND ctx.contextlevel = '80') WHERE (bi.parentcontextid = '26' OR (bi.showinsubcontexts = 1 AND bi.parentcontextid IN ('16','3','1'))) AND bi.pagetypepattern IN ('mod-forum-discuss','mod-forum-discuss-*','mod-forum-*','mod-*','*') AND (bi.subpagepattern IS NULL OR bi.subpagepattern = '') AND (bp.visible = 1 OR bp.visible IS NULL) AND b.visible = 1 ORDER BY COALESCE(bp.region, bi.defaultregion),COALESCE(bp.weight, bi.defaultweight),bi.id;";
+        $pass   = 100;
         while($i < $pass) {
             ++$i;
             $DB->get_records_sql($sql);
@@ -160,6 +206,11 @@ class benchmark_test extends benchmark {
 
     }
 
+    /**
+     * Complex request (n°2)
+     *
+     * @return array Contains the test results
+     */
     public static function querytype2() {
         global $DB;
 
@@ -175,6 +226,11 @@ class benchmark_test extends benchmark {
 
     }
 
+    /**
+     * Time to connect with the guest account
+     *
+     * @return array Contains the test results
+     */
     public static function loginguest() {
         global $CFG;
 
@@ -196,6 +252,11 @@ class benchmark_test extends benchmark {
 
     }
 
+    /**
+     * Time to connect with the user account
+     *
+     * @return array Contains the test results
+     */
     public static function loginuser() {
         global $CFG, $DB;
 
