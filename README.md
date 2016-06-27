@@ -4,7 +4,7 @@
 
 Performs various tests to determine the quality of the Moodle platform
 
-Tested with Moodle 2.9, 3.0, 3.1
+Tested with Moodle 2.7, 2.9, 3.0, 3.1
 
 ## Availability
 
