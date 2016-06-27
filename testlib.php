@@ -201,7 +201,49 @@ class benchmark_test extends benchmark {
         global $DB;
 
         $i      = 0;
-        $sql    = "SELECT bi.id,bp.id AS blockpositionid,bi.blockname,bi.parentcontextid,bi.showinsubcontexts,bi.pagetypepattern,bi.subpagepattern,bi.defaultregion,bi.defaultweight,COALESCE(bp.visible, 1) AS visible,COALESCE(bp.region, bi.defaultregion) AS region,COALESCE(bp.weight, bi.defaultweight) AS weight,bi.configdata, ctx.id AS ctxid, ctx.path AS ctxpath, ctx.depth AS ctxdepth, ctx.contextlevel AS ctxlevel, ctx.instanceid AS ctxinstance FROM mdl_block_instances bi JOIN mdl_block b ON bi.blockname = b.name LEFT JOIN mdl_block_positions bp ON bp.blockinstanceid = bi.id AND bp.contextid = '26' AND bp.pagetype = 'mod-forum-discuss' AND bp.subpage = '' LEFT JOIN mdl_context ctx ON (ctx.instanceid = bi.id AND ctx.contextlevel = '80') WHERE (bi.parentcontextid = '26' OR (bi.showinsubcontexts = 1 AND bi.parentcontextid IN ('16','3','1'))) AND bi.pagetypepattern IN ('mod-forum-discuss','mod-forum-discuss-*','mod-forum-*','mod-*','*') AND (bi.subpagepattern IS NULL OR bi.subpagepattern = '') AND (bp.visible = 1 OR bp.visible IS NULL) AND b.visible = 1 ORDER BY COALESCE(bp.region, bi.defaultregion),COALESCE(bp.weight, bi.defaultweight),bi.id;";
+        $sql    = "SELECT bi.id,
+                         bp.id AS blockpositionid,
+                         bi.blockname,
+                         bi.parentcontextid,
+                         bi.showinsubcontexts,
+                         bi.pagetypepattern,
+                         bi.subpagepattern,
+                         bi.defaultregion,
+                         bi.defaultweight,
+                         COALESCE (bp.visible, 1) AS visible,
+                         COALESCE (bp.region, bi.defaultregion) AS region,
+                         COALESCE (bp.weight, bi.defaultweight) AS weight,
+                         bi.configdata,
+                         ctx.id AS ctxid,
+                         ctx.PATH AS ctxpath,
+                         ctx.DEPTH AS ctxdepth,
+                         ctx.contextlevel AS ctxlevel,
+                         ctx.instanceid AS ctxinstance
+                    FROM {block_instances} bi
+                         JOIN {block} b ON bi.blockname = b.name
+                         LEFT JOIN
+                         {block_positions} bp
+                            ON     bp.blockinstanceid = bi.id
+                               AND bp.contextid = '26'
+                               AND bp.pagetype = 'mod-forum-discuss'
+                               AND bp.subpage = ''
+                         LEFT JOIN {context} ctx
+                            ON (ctx.instanceid = bi.id AND ctx.contextlevel = '80')
+                   WHERE     (   bi.parentcontextid = '26'
+                              OR (    bi.showinsubcontexts = 1
+                                  AND bi.parentcontextid IN ('16', '3', '1')))
+                         AND bi.pagetypepattern IN
+                                ('mod-forum-discuss',
+                                 'mod-forum-discuss-*',
+                                 'mod-forum-*',
+                                 'mod-*',
+                                 '*')
+                         AND (bi.subpagepattern IS NULL OR bi.subpagepattern = '')
+                         AND (bp.visible = 1 OR bp.visible IS NULL)
+                         AND b.visible = 1
+                ORDER BY COALESCE (bp.region, bi.defaultregion),
+                         COALESCE (bp.weight, bi.defaultweight),
+                         bi.id";
         $pass   = 100;
         while($i < $pass) {
             ++$i;
@@ -221,7 +263,29 @@ class benchmark_test extends benchmark {
         global $DB;
 
         $i = 0;
-        $sql = "SELECT parent_states.filter, CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate, parent_states.inheritedstate FROM (SELECT f.filter, MAX(f.sortorder) AS sortorder, CASE WHEN MAX(f.active * ctx.depth) > -MIN(f.active * ctx.depth) THEN 1 ELSE -1 END AS inheritedstate FROM mdl_filter_active f JOIN mdl_context ctx ON f.contextid = ctx.id WHERE ctx.id IN (1,3,16) GROUP BY f.filter HAVING MIN(f.active) > -9999 ) parent_states LEFT JOIN mdl_filter_active fa ON fa.filter = parent_states.filter AND fa.contextid = 26 ORDER BY parent_states.sortorder;";
+        //$sql = "SELECT parent_states.filter, CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate, parent_states.inheritedstate FROM (SELECT f.filter, MAX(f.sortorder) AS sortorder, CASE WHEN MAX(f.active * ctx.depth) > -MIN(f.active * ctx.depth) THEN 1 ELSE -1 END AS inheritedstate FROM mdl_filter_active f JOIN mdl_context ctx ON f.contextid = ctx.id WHERE ctx.id IN (1,3,16) GROUP BY f.filter HAVING MIN(f.active) > -9999 ) parent_states LEFT JOIN mdl_filter_active fa ON fa.filter = parent_states.filter AND fa.contextid = 26 ORDER BY parent_states.sortorder;";
+        $sql = "  SELECT parent_states.filter,
+                             CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate,
+                             parent_states.inheritedstate
+                        FROM (  SELECT f.filter,
+                                       MAX (f.sortorder) AS sortorder,
+                                       CASE
+                                          WHEN MAX (f.active * ctx.DEPTH) >
+                                                  -MIN (f.active * ctx.DEPTH)
+                                          THEN
+                                             1
+                                          ELSE
+                                             -1
+                                       END
+                                          AS inheritedstate
+                                  FROM {filter_active} f
+                                       JOIN {context} ctx ON f.contextid = ctx.id
+                                 WHERE ctx.id IN (1, 3, 16)
+                              GROUP BY f.filter
+                                HAVING MIN (f.active) > -9999) parent_states
+                             LEFT JOIN {filter_active} fa
+                                ON fa.filter = parent_states.filter AND fa.contextid = 26
+                    ORDER BY parent_states.sortorder";
         $pass = 250;
         while($i < $pass) {
             ++$i;
