@@ -263,29 +263,22 @@ class benchmark_test extends benchmark {
         global $DB;
 
         $i = 0;
-        //$sql = "SELECT parent_states.filter, CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate, parent_states.inheritedstate FROM (SELECT f.filter, MAX(f.sortorder) AS sortorder, CASE WHEN MAX(f.active * ctx.depth) > -MIN(f.active * ctx.depth) THEN 1 ELSE -1 END AS inheritedstate FROM mdl_filter_active f JOIN mdl_context ctx ON f.contextid = ctx.id WHERE ctx.id IN (1,3,16) GROUP BY f.filter HAVING MIN(f.active) > -9999 ) parent_states LEFT JOIN mdl_filter_active fa ON fa.filter = parent_states.filter AND fa.contextid = 26 ORDER BY parent_states.sortorder;";
-        $sql = "  SELECT parent_states.filter,
-                             CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate,
-                             parent_states.inheritedstate
-                        FROM (  SELECT f.filter,
-                                       MAX (f.sortorder) AS sortorder,
-                                       CASE
-                                          WHEN MAX (f.active * ctx.DEPTH) >
-                                                  -MIN (f.active * ctx.DEPTH)
-                                          THEN
-                                             1
-                                          ELSE
-                                             -1
-                                       END
-                                          AS inheritedstate
-                                  FROM {filter_active} f
-                                       JOIN {context} ctx ON f.contextid = ctx.id
-                                 WHERE ctx.id IN (1, 3, 16)
-                              GROUP BY f.filter
-                                HAVING MIN (f.active) > -9999) parent_states
-                             LEFT JOIN {filter_active} fa
-                                ON fa.filter = parent_states.filter AND fa.contextid = 26
-                    ORDER BY parent_states.sortorder";
+        $sql = "SELECT parent_states.filter,
+                       CASE WHEN fa.active IS NULL THEN 0 ELSE fa.active END AS localstate,
+                       parent_states.inheritedstate
+                  FROM (SELECT f.filter,
+                               MAX(f.sortorder) AS sortorder,
+                               CASE WHEN MAX(f.active * ctx.DEPTH) > -MIN(f.active * ctx.DEPTH)
+                               THEN 1 ELSE - 1 END  AS inheritedstate
+                          FROM {filter_active} f
+                          JOIN {context} ctx ON f.contextid = ctx.id
+                         WHERE ctx.id IN (1, 3, 16)
+                      GROUP BY f.filter
+                        HAVING MIN(f.active) > -9999) parent_states
+             LEFT JOIN {filter_active} fa
+                    ON fa.filter = parent_states.filter AND fa.contextid = 26
+              ORDER BY parent_states.sortorder";
+
         $pass = 250;
         while($i < $pass) {
             ++$i;
