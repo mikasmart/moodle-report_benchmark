@@ -12,6 +12,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 
 ### Release notes
 
+* 2016-07-02, version v1.0.0: Production version
 * 2016-06-26, version v0.9-r3 (beta): Pre-production version
 * 2016-06-26, version v0.9-r1 (beta): Preview version - Beta
 * 2016-06-25, version 0.0.1b (alpha): all stuff is now in ./moodle/report/benchmark
@@ -77,10 +78,16 @@ Logez-vous comme Administrateur, allez à "Administration du site > Rapports > B
 
 ## Thanks
 
-* To the [Moodle community](https://moodle.org/)
+* To the [Moodle community](https://moodle.org/) and specially the [reviewers](https://moodle.org/mod/forum/discuss.php?d=335357)
 * To Nicolas Martignoni, for help, time and perspective
 * To Jean FRUITET, for help, time and traduction
 * To [Martin Dougiamas](https://en.wikipedia.org/wiki/Martin_Dougiamas), for giving us Moodle
+
+## BenchMark records
+
+* 1st : Sergio Rabellino - 21 points
+* 2nd : Richard Oelmann - 90 points
+* 3rd : Usman Asar - 93 points
 
 ## License
 
