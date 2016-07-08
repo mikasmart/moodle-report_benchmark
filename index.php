@@ -54,8 +54,4 @@ $PAGE->set_pagelayout('report');
 
 // Rendering
 $output = $PAGE->get_renderer('report_benchmark');
-if (!$step) {
-    echo $output->launcher();
-} else {
-    echo $output->display();
-}
+echo !$step ? $output->launcher() : $output->display();
