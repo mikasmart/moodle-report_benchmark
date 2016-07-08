@@ -80,7 +80,7 @@ class report_benchmark {
      */
     private function start_test($name) {
 
-        return call_user_func(array('benchmark_test', $name));
+        return call_user_func(array('report_benchmark_test', $name));
 
     }
 
