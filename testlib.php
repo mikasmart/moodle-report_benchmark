@@ -297,9 +297,8 @@ class report_benchmark_test extends report_benchmark {
     public static function loginguest() {
         global $CFG;
 
-        $header = array('Content-type' => 'application/x-www-form-urlencoded');
-        $data   = array('username' => 'guest', 'password' => 'guest');
-        download_file_content($CFG->wwwroot.'/login/index.php', $header, $data, true);
+        $fakeuser = array('username' => 'guest', 'password' => 'guest');
+        download_file_content($CFG->wwwroot.'/login/index.php', null, $fakeuser);
 
         return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
 
@@ -310,11 +309,10 @@ class report_benchmark_test extends report_benchmark {
      *
      * @return array Contains the test results
      */
-    /*
     public static function loginuser() {
-
         global $CFG, $DB;
 
+        // Create a fake user
         $user               = new stdClass();
         $user->auth         = 'manual';
         $user->confirmed    = 1;
@@ -325,25 +323,17 @@ class report_benchmark_test extends report_benchmark {
         $user->lastname     = 'benchtest';
         $user->firstname    = 'benchtest';
         $user->id           = $DB->insert_record('user', $user);
-        $opts = array('http' =>
-            array(
-                'method'  => 'POST',
-                'header'  => 'Content-type: application/x-www-form-urlencoded',
-                'content' => http_build_query(
-                    array(
-                        'username' => 'benchtest',
-                        'password' => md5('benchtest'),
-                    )
-                )
-            )
-        );
-        file_get_contents($CFG->wwwroot . '/login/index.php', false, stream_context_create($opts));
+
+        // Download login page
+        $fakeuser = array('username' => $user->username, 'password' => $user->password);
+        download_file_content($CFG->wwwroot.'/login/index.php', null, $fakeuser);
+
+        // Delete fake user
         $DB->delete_records('user', array('id' => $user->id));
         unset($user);
 
         return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
 
     }
-    */
 
 }
