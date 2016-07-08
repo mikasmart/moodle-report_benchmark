@@ -12,6 +12,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 
 ### Release notes
 
+* 2016-07-08, version v1.0.1: Production version - Moodle Coding style
 * 2016-07-02, version v1.0.0: Production version
 * 2016-06-26, version v0.9-r3 (beta): Pre-production version
 * 2016-06-26, version v0.9-r1 (beta): Preview version - Beta

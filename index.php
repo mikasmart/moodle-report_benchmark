@@ -26,36 +26,36 @@
 
 
 // Timeout at 2 minutes
-    set_time_limit(120);
+set_time_limit(120);
 
-    define('NO_OUTPUT_BUFFERING', true);
+define('NO_OUTPUT_BUFFERING', true);
 
 // Required config and set markers for the 1st test
-    define('BENCHSTART', microtime(true));
-    require_once('../../config.php');
-    define('BENCHSTOP', microtime(true));
+define('BENCHSTART', microtime(true));
+require_once('../../config.php');
+define('BENCHSTOP', microtime(true));
 
 // Required files
-    require_once($CFG->libdir .'/adminlib.php');
-    require_once($CFG->dirroot.'/report/benchmark/locallib.php');
-    require_once($CFG->dirroot.'/report/benchmark/testlib.php');
+require_once($CFG->libdir .'/adminlib.php');
+require_once($CFG->dirroot.'/report/benchmark/locallib.php');
+require_once($CFG->dirroot.'/report/benchmark/testlib.php');
 
 // Login and check capabilities
-    require_login();
-    require_capability('report/benchmark:view', context_system::instance());
+require_login();
+require_capability('report/benchmark:view', context_system::instance());
 
 // Get the step
-    $step = optional_param('step', false, PARAM_TEXT);
+$step = optional_param('step', false, PARAM_TEXT);
 
 // Set link & Layout
-    admin_externalpage_setup('reportbenchmark');
-    $PAGE->set_url(new moodle_url('/report/benchmark/index.php'));
-    $PAGE->set_pagelayout('report');
+admin_externalpage_setup('reportbenchmark');
+$PAGE->set_url(new moodle_url('/report/benchmark/index.php'));
+$PAGE->set_pagelayout('report');
 
 // Rendering
-    $output = $PAGE->get_renderer('report_benchmark');
-    if (!$step) {
-        echo $output->launcher();
-    } else {
-        echo $output->display();
-    }
+$output = $PAGE->get_renderer('report_benchmark');
+if (!$step) {
+    echo $output->launcher();
+} else {
+    echo $output->display();
+}

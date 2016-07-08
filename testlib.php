@@ -64,7 +64,7 @@ define('BENCHFAIL_SLOWWEB',         'slowweb');
  * Tests for the BenchMark report
  *
  */
-class report_benchmark_test extends benchmark {
+class report_benchmark_test extends report_benchmark {
 
     /**
      * Moodle loading time
@@ -297,19 +297,9 @@ class report_benchmark_test extends benchmark {
     public static function loginguest() {
         global $CFG;
 
-        $opts = array('http' =>
-            array(
-                'method'  => 'POST',
-                'header'  => 'Content-type: application/x-www-form-urlencoded',
-                'content' => http_build_query(
-                    array(
-                        'username' => 'guest',
-                        'password' => 'guest',
-                    )
-                )
-            )
-        );
-        file_get_contents($CFG->wwwroot.'/login/index.php', false, stream_context_create($opts));
+        $header = array('Content-type' => 'application/x-www-form-urlencoded');
+        $data   = array('username' => 'guest', 'password' => 'guest');
+        download_file_content($CFG->wwwroot.'/login/index.php', $header, $data, true);
 
         return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
 
@@ -320,7 +310,9 @@ class report_benchmark_test extends benchmark {
      *
      * @return array Contains the test results
      */
+    /*
     public static function loginuser() {
+
         global $CFG, $DB;
 
         $user               = new stdClass();
@@ -352,5 +344,6 @@ class report_benchmark_test extends benchmark {
         return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
 
     }
+    */
 
 }
