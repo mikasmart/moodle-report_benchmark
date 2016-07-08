@@ -156,7 +156,7 @@ class report_benchmark_test extends benchmark {
         $pass   = 500;
         while($i < $pass) {
             ++$i;
-            $DB->get_record('course', array('id' => 1));
+            $DB->get_record('course', array('id' => SITEID));
         }
 
         return array('limit' => .75, 'over' => 1, 'fail' => BENCHFAIL_SLOWDATABASE);
