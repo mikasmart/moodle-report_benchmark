@@ -325,7 +325,7 @@ class report_benchmark_test extends report_benchmark {
         $user->id           = $DB->insert_record('user', $user);
 
         // Download login page
-        $fakeuser = array('username' => $user->username, 'password' => $user->password);
+        $fakeuser = array('username' => $user->username, 'password' => 'benchtest');
         download_file_content($CFG->wwwroot.'/login/index.php', null, $fakeuser);
 
         // Delete fake user
