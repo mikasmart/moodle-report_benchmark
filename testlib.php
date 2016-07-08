@@ -64,7 +64,7 @@ define('BENCHFAIL_SLOWWEB',         'slowweb');
  * Tests for the BenchMark report
  *
  */
-class benchmark_test extends benchmark {
+class report_benchmark_test extends benchmark {
 
     /**
      * Moodle loading time

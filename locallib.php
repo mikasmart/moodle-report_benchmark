@@ -26,7 +26,7 @@
  * @see testlib.php
  *
  */
-class benchmark {
+class report_benchmark {
 
     private $results = array();
 

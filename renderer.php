@@ -70,7 +70,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
     public function display() {
 
         // Load the BenchMark Class
-        $bench = new benchmark();
+        $bench = new report_benchmark();
 
         // Header
         $out  = $this->output->header();
