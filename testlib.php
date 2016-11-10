@@ -215,8 +215,8 @@ class report_benchmark_test extends report_benchmark {
                          COALESCE (bp.weight, bi.defaultweight) AS weight,
                          bi.configdata,
                          ctx.id AS ctxid,
-                         ctx.PATH AS ctxpath,
-                         ctx.DEPTH AS ctxdepth,
+                         ctx.path AS ctxpath,
+                         ctx.depth AS ctxdepth,
                          ctx.contextlevel AS ctxlevel,
                          ctx.instanceid AS ctxinstance
                     FROM {block_instances} bi
@@ -268,7 +268,7 @@ class report_benchmark_test extends report_benchmark {
                        parent_states.inheritedstate
                   FROM (SELECT f.filter,
                                MAX(f.sortorder) AS sortorder,
-                               CASE WHEN MAX(f.active * ctx.DEPTH) > -MIN(f.active * ctx.DEPTH)
+                               CASE WHEN MAX(f.active * ctx.depth) > -MIN(f.active * ctx.depth)
                                THEN 1 ELSE - 1 END  AS inheritedstate
                           FROM {filter_active} f
                           JOIN {context} ctx ON f.contextid = ctx.id
