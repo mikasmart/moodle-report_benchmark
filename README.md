@@ -4,7 +4,7 @@
 
 Performs various tests to determine the quality of the Moodle platform
 
-Tested with Moodle 2.7, 2.9, 3.0, 3.1
+Tested with Moodle 2.7, 2.9, 3.0, 3.1, 3.2, 3.3
 
 ## Availability
 
@@ -12,6 +12,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 
 ### Release notes
 
+* 2017-09-07, version v1.0.2: Update & test for moodle 3.2, 3.3
 * 2016-07-08, version v1.0.1: Production version - Moodle Coding style
 * 2016-07-02, version v1.0.0: Production version
 * 2016-06-26, version v0.9-r3 (beta): Pre-production version
@@ -92,7 +93,7 @@ Logez-vous comme Administrateur, allez à "Administration du site > Rapports > B
 
 ## License
 
-Copyright ©2016, Mickaël PANNEQUIN <mickael.pannequin@smartcanal.com>
+Copyright ©2016-2017, Mickaël PANNEQUIN <m.pannequin@xperteam.fr>
 
 * All the source code is licensed under GPL 3 or any later version
 * The documentation is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International

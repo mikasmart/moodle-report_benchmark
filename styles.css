@@ -7,11 +7,16 @@
 	padding: 10px 0;
 	border-radius: 4px;
 	background: #f5f5f5;
-	box-shadow: inset 1px 1px 3px 0px #fff, inset -1px -1px 1px 0px #cfcfcf;
+	text-align: center;
 }
 
 #benchmark h3 span {
 	color: #00aa00;
+}
+
+#benchmark h5 {
+	margin-top: 16px;
+	font-size: 14px;
 }
 
 #benchmark .continuebutton a.btn {

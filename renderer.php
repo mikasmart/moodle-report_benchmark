@@ -19,7 +19,7 @@
  *
  * @package    report
  * @subpackage benchmark
- * @copyright  Mickaël Pannequin, mickael.pannequin@smartcanal.com
+ * @copyright  Mickaël Pannequin, m.pannequin@xperteam.fr
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
