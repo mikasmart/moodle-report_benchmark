@@ -12,6 +12,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 
 ### Release notes
 
+* 2017-09-07, version v1.0.3: [Fix #13](https://github.com/mikasmart/benchmark/pull/13)
 * 2017-09-07, version v1.0.2: Update & test for moodle 3.2, 3.3
 * 2016-07-08, version v1.0.1: Production version - Moodle Coding style
 * 2016-07-02, version v1.0.0: Production version
