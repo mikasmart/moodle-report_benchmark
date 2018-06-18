@@ -76,3 +76,9 @@ $string['slowdatabasesolution']     = '<ul><li>Vérifiez <a href="http://dev.mys
 
 $string['slowweblabel']             = 'La page d\'identification utilisateur est trop lente à charger.';
 $string['slowwebsolution']          = '<ul><li>Videz le cache de Moodle</a></li></ul>';
+
+/*
+ * Privacy provider (GDPR)
+ */
+$string["privacy:no_data_reason"] = "Le plugin 'Moodle Benchmark' n'enregistre pas de données par lui-même. Il utilise les données d'autres modules pour créer ses rapports";
+
