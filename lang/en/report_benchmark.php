@@ -76,3 +76,8 @@ $string['slowdatabasesolution']     = '<ul><li>Check <a href="http://dev.mysql.c
 
 $string['slowweblabel']             = 'The page is too slow to upload.';
 $string['slowwebsolution']          = '<ul><li>Clear the Moodle cache</a></li></ul>';
+
+/*
+ * Privacy provider (GDPR)
+ */
+$string["privacy:no_data_reason"] = "The report benchmark plugins doesn't store data by itself. It just access to data from other plugins";
