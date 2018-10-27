@@ -17,9 +17,8 @@
 /**
  * Settings for the benchmark report
  *
- * @package    report
- * @subpackage benchmark
- * @copyright  Mickaël Pannequin, m.pannequin@xperteam.fr
+ * @package    report_benchmark
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -29,5 +28,5 @@ $ADMIN->add('reports',
         new admin_externalpage('reportbenchmark', get_string('benchmark', 'report_benchmark'),
         $CFG->wwwroot.'/report/benchmark/index.php', 'moodle/site:config'));
 
-// no report settings Moodle 2.2
+// No report settings Moodle 2.2.
 $settings = null;

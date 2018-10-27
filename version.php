@@ -17,9 +17,8 @@
 /**
  * Version of the benchmark report
  *
- * @package    report
- * @subpackage benchmark
- * @copyright  Mickaël Pannequin, m.pannequin@xperteam.fr
+ * @package    report_benchmark
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -30,7 +29,7 @@ if (!isset($plugin)) {
     $plugin = new stdClass();
 }
 
-// Plugin informations
+// Plugin informations.
 $plugin->requires   = 2011120500; // Requires this Moodle version 2.0 or later
 $plugin->version    = 2017090701; // The current module version (Date: YYYYMMDDXX)
 $plugin->component  = 'report_benchmark'; // Full name of the plugin (used for diagnostics)

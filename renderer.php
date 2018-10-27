@@ -17,9 +17,8 @@
 /**
  * HTML rendering methods are defined here
  *
- * @package    report
- * @subpackage benchmark
- * @copyright  Mickaël Pannequin, m.pannequin@xperteam.fr
+ * @package    report_benchmark
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,8 +26,10 @@ defined('MOODLE_INTERNAL') || die();
 
 /**
  * Overview benchmark renderer
+ *
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class report_benchmark_renderer extends plugin_renderer_base {
 
     /**
@@ -39,22 +40,22 @@ class report_benchmark_renderer extends plugin_renderer_base {
      */
     public function launcher() {
 
-        // Header
+        // Header.
         $out  = $this->output->header();
         $out .= $this->output->heading(get_string('adminreport', 'report_benchmark'));
 
-        // Welcome message
+        // Welcome message.
         $out .= html_writer::tag('p', get_string('info', 'report_benchmark'));
         $out .= html_writer::tag('p', get_string('infoaverage', 'report_benchmark'));
         $out .= html_writer::tag('p', get_string('infodisclamer', 'report_benchmark'));
 
-        // Button to start the test
+        // Button to start the test.
         $out .= html_writer::start_div('continuebutton');
         $out .= html_writer::link(new moodle_url('/report/benchmark/index.php', array('step' => 'run')),
                 get_string('start', 'report_benchmark'), array('class' => 'btn btn-primary'));
         $out .= html_writer::end_div();
 
-        // Footer
+        // Footer.
         $out .= $this->output->footer();
 
         return $out;
@@ -69,25 +70,25 @@ class report_benchmark_renderer extends plugin_renderer_base {
      */
     public function display() {
 
-        // Load the BenchMark Class
+        // Load the benchmark class.
         $bench = new report_benchmark();
 
-        // Header
+        // Header.
         $out  = $this->output->header();
         $out .= $this->output->heading(get_string('adminreport', 'report_benchmark'));
         $out .= html_writer::start_div(null, array('id' => 'benchmark'));
 
-        // Header string table
+        // Header string table.
         $strdesc    = get_string('description', 'report_benchmark');
         $strduring  = get_string('during', 'report_benchmark');
         $strlimit   = get_string('limit', 'report_benchmark');
         $strover    = get_string('over', 'report_benchmark');
 
-        // Get BenchMark data
+        // Get benchmark data.
         $results    = $bench->get_results();
         $totals     = $bench->get_total();
 
-        // Display the big header score
+        // Display the big header score.
         $out .= html_writer::start_div('text-center');
 
         $out .= html_writer::start_tag('h3');
@@ -101,13 +102,13 @@ class report_benchmark_renderer extends plugin_renderer_base {
 
         $out .= html_writer::end_div();
 
-        // Display all tests with details in table
+        // Display all tests with details in table.
         $table = new html_table();
         $table->head  = array('#', $strdesc, $strduring, $strlimit, $strover);
         $table->attributes = array('class' => 'admintable benchmarkresult generaltable');
         $table->id = 'benchmarkresult';
 
-        foreach($results as $result) {
+        foreach ($results as $result) {
 
             $row = new html_table_row();
             $row->attributes['class'] = 'bench_'.$result['name'];
@@ -162,21 +163,21 @@ class report_benchmark_renderer extends plugin_renderer_base {
         $row->cells[] = $cell;
 
         $table->data[] = $row;
-        
+
         $out .= html_writer::table($table);
 
-        // Contruct and return the fail array without duplicate values
+        // Contruct and return the fail array without duplicate values.
         $fails = array();
-        foreach($results as $result) {
+        foreach ($results as $result) {
             if ($result['during'] >= $result['limit']) {
                 $fails[] = $result['fail'];
             }
         }
         $fails = array_unique($fails);
 
-        // Display the tips
+        // Display the tips.
         $tips = null;
-        foreach($fails as $fail) {
+        foreach ($fails as $fail) {
             $tips .= html_writer::start_tag('h5', null);
             $tips .= get_string($fail.'label', 'report_benchmark');
             $tips .= html_writer::end_tag('h5');
@@ -194,7 +195,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
             $out .= html_writer::end_div();
         }
 
-        // Display the share and redo button
+        // Display the share and redo button.
         $out .= html_writer::start_div('continuebutton');
 
         $out .= html_writer::link(new moodle_url('https://moodle.org/mod/forum/discuss.php', array('d' => '335282')),
@@ -205,12 +206,12 @@ class report_benchmark_renderer extends plugin_renderer_base {
 
         $out .= html_writer::end_div();
 
-        // Footer
+        // Footer.
         $out .= html_writer::end_div();
         $out .= $this->output->footer();
 
         return $out;
 
     }
-    
+
 }

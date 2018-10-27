@@ -15,19 +15,23 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Library for the BenchMark report
+ * Library for the Benchmark report
  *
- * @package    report
- * @subpackage benchmark
- * @copyright  Mickaël Pannequin, m.pannequin@xperteam.fr
+ * @package    report_benchmark
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * HOW TO CREATE A TEST
  * @see testlib.php
- *
  */
+
+defined('MOODLE_INTERNAL') || die();
+
 class report_benchmark {
 
+    /**
+     * benchmark results.
+     */
     private $results = array();
 
     /**
@@ -40,24 +44,24 @@ class report_benchmark {
         $benchs = array();
         $idtest = 0;
 
-        foreach($tests as $name) {
+        foreach ($tests as $name) {
 
             ++$idtest;
 
-            // Inistialize and execute the test
+            // Initialize and execute the test.
             $start  = microtime(true);
             $result = $this->start_test($name);
 
-            // Populate if empty result
+            // Populate if empty result.
             empty($result['limit']) ? $result['limit'] = 0 : null;
-            empty($result['over'])  ? $result['over'] = 0 : null;
+            empty($result['over']) ? $result['over'] = 0 : null;
 
-            // Overwrite the result if start/stop if defined
+            // Overwrite the result if start/stop if defined.
             $over_start = isset($result['start']) ? $result['start'] : $start;
-            $over_stop  = isset($result['stop'])  ? $result['stop']  : microtime(true);
+            $over_stop  = isset($result['stop']) ? $result['stop'] : microtime(true);
             $stop       = round($over_stop - $over_start, 3);
 
-            // Store and merge result
+            // Store and merge result.
             $benchs[$name] = array(
                     'during'    => $stop,
                     'id'        => $idtest,
@@ -67,14 +71,14 @@ class report_benchmark {
                 ) + $result;
         }
 
-        // Store all results
+        // Store all results.
         $this->results = $benchs;
 
     }
 
     /**
      * Start a benchmark test
-     * 
+     *
      * @param string $name Test name
      * @return array Test result
      */
@@ -91,13 +95,13 @@ class report_benchmark {
      */
     private function get_tests() {
 
-        // Get the list of all static method in the class benchmark_test
+        // Get the list of all static method in the class benchmark_test.
         $tests      = array();
         $class      = new ReflectionClass(__CLASS__.'_test');
         $methods    = $class->getMethods(ReflectionMethod::IS_STATIC);
 
-        // Check if the method is in the class benchmark_test
-        foreach($methods as $method) {
+        // Check if the method is in the class benchmark_test.
+        foreach ($methods as $method) {
             if ($method->class == __CLASS__.'_test') {
                 $tests[] = $method->name;
             }
@@ -118,7 +122,7 @@ class report_benchmark {
 
         if ($during >= $over) {
             $class = 'danger';
-        } elseif ($during >= $limit) {
+        } else if ($during >= $limit) {
             $class = 'warning';
         } else {
             $class = 'success';
@@ -128,6 +132,8 @@ class report_benchmark {
     }
 
     /**
+     * Return the result of all tests
+     *
      * @return array Get the result of all tests
      */
     public function get_results() {
@@ -137,13 +143,15 @@ class report_benchmark {
     }
 
     /**
+     * Return total time and score of all tests
+     *
      * @return array Get the total time and score of all tests
      */
     public function get_total() {
 
         $total = 0;
 
-        foreach($this->results as $result) {
+        foreach ($this->results as $result) {
             $total += $result['during'];
         }
 

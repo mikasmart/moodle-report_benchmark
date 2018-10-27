@@ -13,45 +13,43 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * The BenchMark report
+ * The Benchmark report
  *
- * @package    report
- * @subpackage benchmark
- * @copyright  Mickaël Pannequin, m.pannequin@xperteam.fr
+ * @package    report_benchmark
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @link       https://github.com/mikasmart/benchmark Source on GitHub
- *
  */
 
-
-// Timeout at 2 minutes
+// Timeout at 2 minutes.
 set_time_limit(120);
 
 define('NO_OUTPUT_BUFFERING', true);
 
-// Required config and set markers for the 1st test
+// Required config and set markers for the 1st test.
 define('BENCHSTART', microtime(true));
 require_once('../../config.php');
 define('BENCHSTOP', microtime(true));
 
-// Required files
+// Required files.
 require_once($CFG->libdir .'/adminlib.php');
 require_once($CFG->dirroot.'/report/benchmark/locallib.php');
 require_once($CFG->dirroot.'/report/benchmark/testlib.php');
 
-// Login and check capabilities
+// Login and check capabilities.
 require_login();
 require_capability('report/benchmark:view', context_system::instance());
 
-// Get the step
+// Get the step.
 $step = optional_param('step', false, PARAM_TEXT);
 
-// Set link & Layout
+// Set link & Layout.
 admin_externalpage_setup('reportbenchmark');
 $PAGE->set_url(new moodle_url('/report/benchmark/index.php'));
 $PAGE->set_pagelayout('report');
 
-// Rendering
+// Rendering.
 $output = $PAGE->get_renderer('report_benchmark');
 echo !$step ? $output->launcher() : $output->display();

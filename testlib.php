@@ -17,9 +17,8 @@
 /**
  * Declare all tests for the benchmark
  *
- * @package    report
- * @subpackage benchmark
- * @copyright  Mickaël Pannequin, m.pannequin@xperteam.fr
+ * @package    report_benchmark
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * HOW TO CREATE A TEST
@@ -38,12 +37,13 @@
  *      (float)  limit: Time limit too high but acceptable (orange)
  *      (float)  over : Over time, the benchmark fail (red)
  *      (define) fail : To display the good text if the test fail
- * 
+ *
  * 2) The function must have strings in language file "/lang/xy/report_benchmark.php"
  *
- * If you create more test, please send it to the community
- * 
- * 
+ * If you create more tests, please contribute them to the community.
+ *
+ *
+ *
  *
  */
 
@@ -53,7 +53,7 @@ defined('MOODLE_INTERNAL') || die();
  * BenchMark Test
  */
 
-// Define to join the language pack
+// Define to join the language pack.
 define('BENCHFAIL_SLOWSERVER',      'slowserver');
 define('BENCHFAIL_SLOWPROCESSOR',   'slowprocessor');
 define('BENCHFAIL_SLOWHARDDRIVE',   'slowharddrive');
@@ -63,6 +63,8 @@ define('BENCHFAIL_SLOWWEB',         'slowweb');
 /**
  * Tests for the BenchMark report
  *
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class report_benchmark_test extends report_benchmark {
 
@@ -91,9 +93,10 @@ class report_benchmark_test extends report_benchmark {
     public static function processor() {
 
         $pass = 10000000;
-        for ($i = 0; $i < $pass; ++$i);
+        for ($i = 0; $i < $pass; ++$i) {
+        };
         $i = 0;
-        while($i < $pass) {
+        while ($i < $pass) {
             ++$i;
         }
 
@@ -112,7 +115,7 @@ class report_benchmark_test extends report_benchmark {
         file_put_contents($CFG->tempdir.'/benchmark.temp', 'benchmark');
         $i      = 0;
         $pass   = 2000;
-        while($i < $pass) {
+        while ($i < $pass) {
             ++$i;
             file_get_contents($CFG->tempdir.'/benchmark.temp');
         }
@@ -134,7 +137,7 @@ class report_benchmark_test extends report_benchmark {
         $loremipsum = str_repeat($lorem, 16);
         $i          = 0;
         $pass       = 2000;
-        while($i < $pass) {
+        while ($i < $pass) {
             ++$i;
             file_put_contents($CFG->tempdir.'/benchmark.temp', $loremipsum);
         }
@@ -154,7 +157,7 @@ class report_benchmark_test extends report_benchmark {
 
         $i      = 0;
         $pass   = 500;
-        while($i < $pass) {
+        while ($i < $pass) {
             ++$i;
             $DB->get_record('course', array('id' => SITEID));
         }
@@ -181,7 +184,7 @@ class report_benchmark_test extends report_benchmark {
 
         $i      = 0;
         $pass   = 25;
-        while($i < $pass) {
+        while ($i < $pass) {
             ++$i;
             $DB->insert_record('course', $newrecord);
         }
@@ -245,7 +248,7 @@ class report_benchmark_test extends report_benchmark {
                          COALESCE (bp.weight, bi.defaultweight),
                          bi.id";
         $pass   = 100;
-        while($i < $pass) {
+        while ($i < $pass) {
             ++$i;
             $DB->get_records_sql($sql);
         }
@@ -280,7 +283,7 @@ class report_benchmark_test extends report_benchmark {
               ORDER BY parent_states.sortorder";
 
         $pass = 250;
-        while($i < $pass) {
+        while ($i < $pass) {
             ++$i;
             $DB->get_records_sql($sql);
         }
@@ -312,7 +315,7 @@ class report_benchmark_test extends report_benchmark {
     public static function loginuser() {
         global $CFG, $DB;
 
-        // Create a fake user
+        // Create a fake user.
         $user               = new stdClass();
         $user->auth         = 'manual';
         $user->confirmed    = 1;
@@ -324,11 +327,11 @@ class report_benchmark_test extends report_benchmark {
         $user->firstname    = 'benchtest';
         $user->id           = $DB->insert_record('user', $user);
 
-        // Download login page
+        // Download login page.
         $fakeuser = array('username' => $user->username, 'password' => 'benchtest');
         download_file_content($CFG->wwwroot.'/login/index.php', null, $fakeuser);
 
-        // Delete fake user
+        // Delete fake user.
         $DB->delete_records('user', array('id' => $user->id));
         unset($user);
 
