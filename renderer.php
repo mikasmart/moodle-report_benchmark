@@ -33,9 +33,9 @@ defined('MOODLE_INTERNAL') || die();
 class report_benchmark_renderer extends plugin_renderer_base {
 
     /**
-     * Disclamer
+     * Disclaimer
      *
-     * @return string First page, disclamer
+     * @return string First page, disclaimer
      * @throws coding_exception
      */
     public function launcher() {
@@ -47,7 +47,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
         // Welcome message.
         $out .= html_writer::tag('p', get_string('info', 'report_benchmark'));
         $out .= html_writer::tag('p', get_string('infoaverage', 'report_benchmark'));
-        $out .= html_writer::tag('p', get_string('infodisclamer', 'report_benchmark'));
+        $out .= html_writer::tag('p', get_string('infodisclaimer', 'report_benchmark'));
 
         // Button to start the test.
         $out .= html_writer::start_div('continuebutton');

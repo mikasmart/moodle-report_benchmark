@@ -30,7 +30,7 @@ $string['modulename']       = 'Moodle Benchmark';
 $string['adminreport']      = 'System Benchmark';
 $string['info']             = 'This benchmark should last less than 1 minute and will be aborted at 2 minutes. Please wait until the results show up.';
 $string['infoaverage']      = 'We invite you to take this test several times to obtain an average.';
-$string['infodisclamer']    = 'It is not recommended to launch this benchmark on a production platform.';
+$string['infodisclaimer']   = 'It is not recommended to launch this benchmark on a production platform.';
 $string['start']            = 'Start the test';
 $string['redo']             = 'Start the test again';
 $string['scoremsg']         = 'Benchmark Score:';
@@ -103,3 +103,8 @@ $string['slowwebsolution']          = '<ul><li>Purge the Moodle cache</a></li></
  * Privacy provider (GDPR)
  */
 $string['privacy:no_data_reason']   = 'The report benchmark plugins doesn\'t store data by itself. It just access to data from other plugins';
+
+/*
+ * Deprecated strings
+ */
+$string['infodisclamer']    = 'It is not recommended to launch this benchmark on a production platform.';
