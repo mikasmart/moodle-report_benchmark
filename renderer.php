@@ -18,7 +18,7 @@
  * HTML rendering methods are defined here
  *
  * @package    report_benchmark
- * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
+ * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 /**
  * Overview benchmark renderer
  *
- * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
+ * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class report_benchmark_renderer extends plugin_renderer_base {
