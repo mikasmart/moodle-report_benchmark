@@ -18,7 +18,7 @@
  * Library for the Benchmark report
  *
  * @package    report_benchmark
- * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
+ * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * HOW TO CREATE A TEST
