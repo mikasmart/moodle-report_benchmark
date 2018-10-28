@@ -13,11 +13,12 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
  * Privacy Subsystem implementation for report_benchmark.
  *
  * @package    report_benchmark
- * @copyright  2018 Olivier SECRET <olivier.secret@catalyst-au.net>
+ * @copyright  2018 Olivier Secret {@link olivier.secret@catalyst-au.net}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -25,23 +26,23 @@ namespace report_benchmark\privacy;
 
 defined('MOODLE_INTERNAL') || die();
 
-use core_privacy\local\request\context;
-
 /**
- * @copyright  2018 Olivier SECRET <olivier.secret@catalyst-au.net>
+ * Privacy Subsystem for report_benchmark implementing null_provider.
+ *
+ * This plugin does not store any personal user data.
+ * @copyright  2018 Olivier Secret {@link olivier.secret@catalyst-au.net}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements
-    \core_privacy\local\metadata\null_provider {
-
+class provider implements \core_privacy\local\metadata\null_provider {
 
     /**
      * Get the language string identifier with the component's language
      * file to explain why this plugin stores no data.
      *
-     * @return  string
+     * @return  String
      */
-    public static function get_reason(): string {
+    public static function get_reason() : string {
         return 'privacy:no_data_reason';
     }
+
 }
