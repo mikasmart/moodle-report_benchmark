@@ -31,19 +31,19 @@ $string['adminreport']      = 'System Benchmark';
 $string['info']             = 'This benchmark should last less than 1 minute and will be aborted at 2 minutes. Please wait until the results show up.';
 $string['infoaverage']      = 'It is recommended to take this test several times to obtain a significant average.';
 $string['infodisclaimer']   = 'It is not recommended to launch this benchmark on a production platform.';
-$string['start']            = 'Start the test';
-$string['redo']             = 'Start the test again';
+$string['start']            = 'Start the benchmark';
+$string['redo']             = 'Start the benchmark again';
 $string['scoremsg']         = 'Benchmark Score:';
 $string['points']           = '{$a} points';
 $string['description']      = 'Description';
-$string['during']           = 'Time in seconds';
+$string['during']           = 'Time (seconds)';
 $string['limit']            = 'Acceptable limit';
 $string['over']             = 'Critical limit';
 $string['total']            = 'Total time';
 $string['score']            = 'Score';
 $string['duration']         = '{$a} s';
-$string['benchsuccess']     = '<b>Congratulations!</b><br />Your Moodle seems to work perfectly.';
-$string['benchfail']        = '<b>Watch out!</b><br />Your Moodle seems to have some difficulties.';
+$string['benchsuccess']     = '<b>Congratulations!</b><br />Your Moodle performance seems perfect.';
+$string['benchfail']        = '<b>Watch out!</b><br />Your Moodle performance is not optimal.';
 $string['benchshare']       = 'Share my score on the forum';
 
 /*
@@ -51,53 +51,53 @@ $string['benchshare']       = 'Share my score on the forum';
  */
 
 $string['cloadname']            = 'Moodle loading time';
-$string['cloadmoreinfo']        = 'Run the configuration file &laquo;config.php&raquo;';
+$string['cloadmoreinfo']        = 'Load the "config.php" configuration file';
 
 $string['processorname']        = 'Loop function call';
-$string['processormoreinfo']    = 'A function is called in a loop to test processor speed';
+$string['processormoreinfo']    = 'Call a PHP function with a loop to check the processor speed';
 
-$string['filereadname']         = 'Reading files';
-$string['filereadmoreinfo']     = 'Test the reading speed of the Moodle temporary folder';
+$string['filereadname']         = 'Read files';
+$string['filereadmoreinfo']     = 'Read a file multiple times to check the reading speed of the Moodle temporary folder';
 
-$string['filewritename']        = 'Creating files';
-$string['filewritemoreinfo']    = 'Test the writing speed of the Moodle temporary folder';
+$string['filewritename']        = 'Write files';
+$string['filewritemoreinfo']    = 'Write a file multiple times to check the writing speed of the Moodle temporary folder';
 
-$string['coursereadname']       = 'Reading course';
-$string['coursereadmoreinfo']   = 'Test the read speed to read a course';
+$string['coursereadname']       = 'Read course';
+$string['coursereadmoreinfo']   = 'Read a course multiple times to check the reading speed of the database';
 
-$string['coursewritename']      = 'Writing course';
-$string['coursewritemoreinfo']  = 'Test the speed of the database to write a course';
+$string['coursewritename']      = 'Write course';
+$string['coursewritemoreinfo']  = 'Write a course multiple times to check the writing speed of the database';
 
-$string['querytype1name']       = 'Complex SQL query (n°1)';
-$string['querytype1moreinfo']   = 'Test the speed of the database to execute a complex SQL query';
+$string['querytype1name']       = 'Complex SQL query (#1)';
+$string['querytype1moreinfo']   = 'Run a complex SQL query to check the speed of the database';
 
-$string['querytype2name']       = 'Complex SQL query (n°2)';
-$string['querytype2moreinfo']   = 'Test the speed of the database to execute a complex SQL query';
+$string['querytype2name']       = 'Complex SQL query (#2)';
+$string['querytype2moreinfo']   = 'Run a complex SQL query to check the speed of the database';
 
 $string['loginguestname']       = 'Login time for the guest account';
-$string['loginguestmoreinfo']   = 'Measures the loading time of the guest account login page';
+$string['loginguestmoreinfo']   = 'Check the loading time of the guest account login page';
 
 $string['loginusername']        = 'Login time for a fake user account';
-$string['loginusermoreinfo']    = 'Measures the loading time of a fake user account login page';
+$string['loginusermoreinfo']    = 'Check the loading time of a fake user account login page';
 
 /*
  * Add your solution here
  */
 
 $string['slowserverlabel']          = 'The web server seems too slow.';
-$string['slowserversolution']       = '<ul><li>Set your Apache in <a href="https://httpd.apache.org/docs/2.4/en/mpm.html" target="_blank">multi-processing</a> mode or switch to <a href="https://nginx.org/" target="_blank">NGinx</a>.</li><li>If your Moodle is installed on your computer, try to deactivate your antivirus where Moodle is located. Do it with precaution.</li></ul>';
+$string['slowserversolution']       = '<ul><li>Set your Apache in <a href="https://httpd.apache.org/docs/2.4/en/mpm.html" target="_blank">multi-processing</a> mode or switch to <a href="https://nginx.org/" target="_blank">NGinx</a>.</li><li>If your Moodle is installed on your computer, carefully configure your antivirus so that it does not check the installation of Moodle.</li></ul>';
 
 $string['slowprocessorlabel']       = 'The processor seems too slow.';
-$string['slowprocessorsolution']    = '<ul><li>Check that your hardware configuration is large enough to run Moodle.</li></ul>';
+$string['slowprocessorsolution']    = '<ul><li>Check that your hardware configuration is high enough to run Moodle.</li></ul>';
 
-$string['slowharddrivelabel']       = 'The harddrive seems too slow.';
-$string['slowharddrivesolution']    = '<ul><li>Check the harddrive and/or the temporary folder state</li><li>Change your harddrive or the temporary folder</li></ul>';
+$string['slowharddrivelabel']       = 'The hard drive seems too slow.';
+$string['slowharddrivesolution']    = '<ul><li>Check the status of the hard drive and/or the temporary folder.</li><li>Change the hard drive and/or the temporary folder.</li></ul>';
 
 $string['slowdatabaselabel']        = 'The database seems too slow.';
-$string['slowdatabasesolution']     = '<ul><li>Check <a href="http://dev.mysql.com/doc/refman/5.7/en/mysqlcheck.html" target="_blank">the database integrity</a></li><li>Optimze <a href="http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html" target="_blank">the database</a></li></ul>';
+$string['slowdatabasesolution']     = '<ul><li>Check <a href="https://mariadb.com/kb/en/library/mysqlcheck/" target="_blank">the database integrity</a>.</li><li>Optimize <a href="https://mariadb.com/kb/en/library/optimization-and-tuning/" target="_blank">the database</a>.</li></ul>';
 
-$string['slowweblabel']             = 'The login page is too slow to load.';
-$string['slowwebsolution']          = '<ul><li>Purge the Moodle cache</a></li></ul>';
+$string['slowweblabel']             = 'The login page is being loaded too slowly.';
+$string['slowwebsolution']          = '<ul><li><a href="/admin/purgecaches.php">Purge the Moodle cache</a>.</li></ul>';
 
 /*
  * Privacy provider (GDPR)
