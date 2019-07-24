@@ -53,31 +53,31 @@ $string['benchshare']       = 'Share my score on the forum';
 $string['cloadname']            = 'Moodle loading time';
 $string['cloadmoreinfo']        = 'Load the "config.php" configuration file';
 
-$string['processorname']        = 'Loop function call';
+$string['processorname']        = 'Processor processing speed';
 $string['processormoreinfo']    = 'Call a PHP function with a loop to check the processor speed';
 
-$string['filereadname']         = 'Read files';
+$string['filereadname']         = 'Reading file performance';
 $string['filereadmoreinfo']     = 'Read a file multiple times to check the reading speed of the Moodle temporary folder';
 
-$string['filewritename']        = 'Write files';
+$string['filewritename']        = 'Writing file performance';
 $string['filewritemoreinfo']    = 'Write a file multiple times to check the writing speed of the Moodle temporary folder';
 
-$string['coursereadname']       = 'Read course';
+$string['coursereadname']       = 'Reading course performance';
 $string['coursereadmoreinfo']   = 'Read a course multiple times to check the reading speed of the database';
 
-$string['coursewritename']      = 'Write course';
+$string['coursewritename']      = 'Writing course performance';
 $string['coursewritemoreinfo']  = 'Write a course multiple times to check the writing speed of the database';
 
-$string['querytype1name']       = 'Complex SQL query (#1)';
+$string['querytype1name']       = 'Database performance (#1)';
 $string['querytype1moreinfo']   = 'Run a complex SQL query to check the speed of the database';
 
-$string['querytype2name']       = 'Complex SQL query (#2)';
+$string['querytype2name']       = 'Database performance (#2)';
 $string['querytype2moreinfo']   = 'Run a complex SQL query to check the speed of the database';
 
-$string['loginguestname']       = 'Login time for the guest account';
+$string['loginguestname']       = 'Login time performance for the guest account';
 $string['loginguestmoreinfo']   = 'Check the loading time of the guest account login page';
 
-$string['loginusername']        = 'Login time for a fake user account';
+$string['loginusername']        = 'Login time performance for a fake user account';
 $string['loginusermoreinfo']    = 'Check the loading time of a fake user account login page';
 
 /*
@@ -97,7 +97,7 @@ $string['slowdatabaselabel']        = 'The database seems too slow.';
 $string['slowdatabasesolution']     = '<ul><li>Check <a href="https://mariadb.com/kb/en/library/mysqlcheck/" target="_blank">the database integrity</a>.</li><li>Optimize <a href="https://mariadb.com/kb/en/library/optimization-and-tuning/" target="_blank">the database</a>.</li></ul>';
 
 $string['slowweblabel']             = 'The login page is being loaded too slowly.';
-$string['slowwebsolution']          = '<ul><li><a href="/admin/purgecaches.php">Purge the Moodle cache</a>.</li></ul>';
+$string['slowwebsolution']          = '<ul><li><a href="/admin/purgecaches.php" target="_blank">Purge the Moodle cache</a>.</li></ul>';
 
 /*
  * Privacy provider (GDPR)
