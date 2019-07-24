@@ -92,7 +92,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
         $out .= html_writer::start_div('text-center');
 
         $out .= html_writer::start_tag('h3');
-        $out .= get_string('scoremsg', 'report_benchmark');
+        $out .= get_string('scoremsg', 'report_benchmark') . ' ';
 
         $out .= html_writer::start_tag('span');
         $out .= get_string('points', 'report_benchmark', $totals['score']);
@@ -141,7 +141,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
         $cell->colspan = 2;
         $row->cells[] = $cell;
 
-        $cell = new html_table_cell(get_string('seconde', 'report_benchmark', number_format($totals['total'], 3, '.', null)));
+        $cell = new html_table_cell(get_string('duration', 'report_benchmark', number_format($totals['total'], 3, '.', null)));
         $row->cells[] = $cell;
 
         $cell = new html_table_cell('&nbsp;');

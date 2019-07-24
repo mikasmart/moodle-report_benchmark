@@ -29,19 +29,19 @@ $string['modulenameplural'] = 'Moodle Benchmarks';
 $string['modulename']       = 'Moodle Benchmark';
 $string['adminreport']      = 'System Benchmark';
 $string['info']             = 'This benchmark should last less than 1 minute and will be aborted at 2 minutes. Please wait until the results show up.';
-$string['infoaverage']      = 'We invite you to take this test several times to obtain an average.';
+$string['infoaverage']      = 'It is recommended to take this test several times to obtain a significant average.';
 $string['infodisclaimer']   = 'It is not recommended to launch this benchmark on a production platform.';
 $string['start']            = 'Start the test';
 $string['redo']             = 'Start the test again';
 $string['scoremsg']         = 'Benchmark Score:';
-$string['points']           = ' {$a} points';
+$string['points']           = '{$a} points';
 $string['description']      = 'Description';
 $string['during']           = 'Time in seconds';
 $string['limit']            = 'Acceptable limit';
 $string['over']             = 'Critical limit';
 $string['total']            = 'Total time';
 $string['score']            = 'Score';
-$string['seconde']          = ' {$a} s';
+$string['duration']         = '{$a} s';
 $string['benchsuccess']     = '<b>Congratulations!</b><br />Your Moodle seems to work perfectly.';
 $string['benchfail']        = '<b>Watch out!</b><br />Your Moodle seems to have some difficulties.';
 $string['benchshare']       = 'Share my score on the forum';
@@ -108,3 +108,4 @@ $string['privacy:no_data_reason']   = 'The report benchmark plugins doesn\'t sto
  * Deprecated strings
  */
 $string['infodisclamer']    = 'It is not recommended to launch this benchmark on a production platform.';
+$string['seconde']          = '{$a} s';
