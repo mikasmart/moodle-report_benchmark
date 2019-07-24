@@ -1,10 +1,12 @@
 ![alt tag](https://github.com/mikasmart/benchmark/blob/master/screenshot.jpg)
 
-# Moodle Benchmark
+# Moodle Benchmark plugin
 
-Performs various tests to determine the quality of the Moodle platform
+[![GitHub release](https://img.shields.io/github/release/mikasmart/benchmark.svg)](https://github.com/mikasmart/benchmark/releases/latest)
+[![GitHub Release Date](https://img.shields.io/github/release-date/mikasmart/benchmark.svg)](https://github.com/mikasmart/benchmark/releases/latest)
+[![GitHub last commit](https://img.shields.io/github/last-commit/mikasmart/benchmark.svg)](https://github.com/mikasmart/benchmark/commits/)
 
-Tested with Moodle 2.7, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6dev
+Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7 to 3.7.
 
 ## Availability
 
@@ -12,7 +14,8 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 
 ### Release notes
 
-* 2018-10-28, version v1.1.0-dev: RGPD [Fix #18](https://github.com/mikasmart/benchmark/issues/18)
+* 2019-07-24, version v1.2.0: Compatibility with Moodle 3.7.x. See [release v1.2.0](https://github.com/mikasmart/benchmark/releases/tag/v1.2.0).
+* 2018-10-28, version v1.1.0: RGPD [Fix #18](https://github.com/mikasmart/benchmark/issues/18) and compatibility with Moodle 3.5 and 3.6
 * 2017-09-07, version v1.0.3: [Fix #13](https://github.com/mikasmart/benchmark/issues/13)
 * 2017-09-07, version v1.0.2: Update & test for moodle 3.2, 3.3
 * 2016-07-08, version v1.0.1: Production version - Moodle Coding style
@@ -25,14 +28,14 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 ## Installation
 ### English
 
-####manually
+#### Manually
 * Clone or download the ***master*** *branch* directly on your  ./moodle/report directory server
 * Rename it to benchmark
 * Logon as admin on your Moodle server
 * Go to "Site Administration > Notification"
 * Install the new plugin as usual
 
-####automatic
+#### Automatically
 * [Download the zip](https://github.com/mikasmart/benchmark/archive/master.zip)
 * Open the Zip and rename the folder *benchmark-master* in *benchmark*
 * Logon as admin on your Moodle server
@@ -42,14 +45,14 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 
 ### French
 
-####manuellement
+#### Manuellement
 * Cloner ou télécharger *la branche* ***master*** directement vers le dossier ./moodle/report de votre serveur
 * Renommez-le benchmark
 * Logez-vous comme administrateur
 * Allez à "Administration du site > Notification"
 * Installez le nouveau plugin comme d'habitude
 
-####automatiquement
+#### Automatiquement
 * [Télécharger le zip](https://github.com/mikasmart/benchmark/archive/master.zip)
 * Ouvrir le Zip et renommer le dossier *benchmark-master* en *benchmark*
 * Logez-vous comme administrateur
@@ -63,7 +66,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 As Admin logon your server, go to "Site Administration > Reports > Benchmark"
 
 ### French
-Logez-vous comme Administrateur, allez à "Administration du site > Rapports > Benchmark"
+Connectez-vous comme Administrateur, allez à "Administration du site > Rapports > Benchmark"
 
 ## Requirement
 
@@ -76,18 +79,18 @@ Logez-vous comme Administrateur, allez à "Administration du site > Rapports > B
 
 ## Roadmap
 
-- Add more test (please, [send your test on the Moodle Forum](https://moodle.org/mod/forum/discuss.php?d=335282))
+- Add more tests (please [send your test on the Moodle Forum](https://moodle.org/mod/forum/discuss.php?d=335282))
 - Add sharing score on a global website (?)
-- Add more language
+- Add more languages
 
 ## Thanks
 
 * To the [Moodle community](https://moodle.org/) and specially the [reviewers](https://moodle.org/mod/forum/discuss.php?d=335357)
 * To Nicolas Martignoni, for help, time and perspective
-* To Jean FRUITET, for help, time and traduction
+* To Jean Fruitet, for help, time and traduction
 * To [Martin Dougiamas](https://en.wikipedia.org/wiki/Martin_Dougiamas), for giving us Moodle
 
-## BenchMark records
+## Benchmark records
 
 * 1st : Sergio Rabellino - 21 points
 * 2nd : Richard Oelmann - 90 points
@@ -95,7 +98,7 @@ Logez-vous comme Administrateur, allez à "Administration du site > Rapports > B
 
 ## License
 
-Copyright ©2016-2018, Mickaël PANNEQUIN <mickael.pannequin@gmail.com>
+Copyright ©2016 onwards, Mickaël PANNEQUIN <mickael.pannequin@gmail.com>
 
 * All the source code is licensed under GPL 3 or any later version
 * The documentation is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
