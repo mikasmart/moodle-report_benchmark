@@ -1,22 +1,22 @@
-![alt tag](https://github.com/mikasmart/benchmark/blob/master/screenshot.jpg)
+![Benchmark screenshot](https://github.com/mikasmart/moodle-report_benchmark/blob/master/screenshot.jpg)
 
 # Moodle Benchmark plugin
 
-[![GitHub release](https://img.shields.io/github/release/mikasmart/benchmark.svg)](https://github.com/mikasmart/benchmark/releases/latest)
-[![GitHub Release Date](https://img.shields.io/github/release-date/mikasmart/benchmark.svg)](https://github.com/mikasmart/benchmark/releases/latest)
-[![GitHub last commit](https://img.shields.io/github/last-commit/mikasmart/benchmark.svg)](https://github.com/mikasmart/benchmark/commits/)
+[![GitHub release](https://img.shields.io/github/release/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/releases/latest)
+[![GitHub Release Date](https://img.shields.io/github/release-date/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/releases/latest)
+[![GitHub last commit](https://img.shields.io/github/last-commit/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/commits/)
 
 Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7 to 3.7.
 
 ## Availability
 
-Code available at [https://github.com/mikasmart/benchmark](https://github.com/mikasmart/benchmark).
+Code available at [https://github.com/mikasmart/moodle-report_benchmark](https://github.com/mikasmart/moodle-report_benchmark).
 
 ### Release notes
 
-* 2019-07-24, version v1.2.0: Compatibility with Moodle 3.7.x. See [release v1.2.0](https://github.com/mikasmart/benchmark/releases/tag/v1.2.0).
-* 2018-10-28, version v1.1.0: RGPD [Fix #18](https://github.com/mikasmart/benchmark/issues/18) and compatibility with Moodle 3.5 and 3.6
-* 2017-09-07, version v1.0.3: [Fix #13](https://github.com/mikasmart/benchmark/issues/13)
+* 2019-07-24, version v1.2.0: Compatibility with Moodle 3.7.x. See [release v1.2.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.2.0).
+* 2018-10-28, version v1.1.0: RGPD [Fix #18](https://github.com/mikasmart/moodle-report_benchmark/issues/18) and compatibility with Moodle 3.5 and 3.6
+* 2017-09-07, version v1.0.3: [Fix #13](https://github.com/mikasmart/moodle-report_benchmark/issues/13)
 * 2017-09-07, version v1.0.2: Update & test for moodle 3.2, 3.3
 * 2016-07-08, version v1.0.1: Production version - Moodle Coding style
 * 2016-07-02, version v1.0.0: Production version
@@ -36,7 +36,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 * Install the new plugin as usual
 
 #### Automatically
-* [Download the zip](https://github.com/mikasmart/benchmark/archive/master.zip)
+* [Download the zip](https://github.com/mikasmart/moodle-report_benchmark/archive/master.zip)
 * Open the Zip and rename the folder *benchmark-master* in *benchmark*
 * Logon as admin on your Moodle server
 * go to "Site Administration > Plugins > Install plugins"
@@ -53,7 +53,7 @@ Code available at [https://github.com/mikasmart/benchmark](https://github.com/mi
 * Installez le nouveau plugin comme d'habitude
 
 #### Automatiquement
-* [Télécharger le zip](https://github.com/mikasmart/benchmark/archive/master.zip)
+* [Télécharger le zip](https://github.com/mikasmart/moodle-report_benchmark/archive/master.zip)
 * Ouvrir le Zip et renommer le dossier *benchmark-master* en *benchmark*
 * Logez-vous comme administrateur
 * Allez à "Administration du site > Plugins > Installer des plugins"

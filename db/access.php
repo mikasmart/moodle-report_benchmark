@@ -20,7 +20,7 @@
  * @package    report_benchmark
  * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @link       https://github.com/mikasmart/benchmark Source on GitHub
+ * @link       https://github.com/mikasmart/moodle-report_benchmark Source on GitHub
  */
 
 defined('MOODLE_INTERNAL') || die();
