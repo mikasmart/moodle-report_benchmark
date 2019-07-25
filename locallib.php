@@ -27,10 +27,18 @@
 
 defined('MOODLE_INTERNAL') || die();
 
+/**
+ * Utility class for report_benchmark
+ *
+ * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class report_benchmark {
 
     /**
      * benchmark results.
+     *
+     * @var array Benchmark results.
      */
     private $results = array();
 
@@ -39,7 +47,7 @@ class report_benchmark {
      */
     public function __construct() {
 
-        // Get the list of test
+        // Get the list of test.
         $tests  = $this->get_tests();
         $benchs = array();
         $idtest = 0;

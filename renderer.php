@@ -134,7 +134,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
 
         }
 
-        // Display the table footer
+        // Display the table footer.
         $row = new html_table_row();
         $row->attributes['class'] = 'footer';
         $cell = new html_table_cell(get_string('total', 'report_benchmark'));
