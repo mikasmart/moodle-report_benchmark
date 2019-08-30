@@ -112,17 +112,20 @@ class report_benchmark_test extends report_benchmark {
     public static function fileread() {
         global $CFG;
 
-        file_put_contents($CFG->tempdir.'/benchmark.temp', 'benchmark');
+        $tempfolder=$CFG->tempdir.'/report_benchmark';
+
+        check_dir_exists($tempfolder,true);
+
+        file_put_contents($tempfolder.'/benchmark.temp', 'benchmark');
         $i      = 0;
         $pass   = 2000;
         while ($i < $pass) {
             ++$i;
-            file_get_contents($CFG->tempdir.'/benchmark.temp');
+            file_get_contents($tempfolder.'/benchmark.temp');
         }
-        unlink($CFG->tempdir.'/benchmark.temp');
+        unlink($tempfolder.'/benchmark.temp');
 
         return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
-
     }
 
     /**
