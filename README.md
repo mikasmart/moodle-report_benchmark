@@ -8,7 +8,7 @@
 
 Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7.x to 3.7.x.
 
-> Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inaccurate file writing performance check. __Be careful comparing benchmark done before and after version 1.3.0!__
+> Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inaccurate file writing performance check. __Be careful when comparing benchmarks done before and after version 1.3.0!__
 
 ## Availability
 
