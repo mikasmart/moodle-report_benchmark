@@ -6,7 +6,9 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/releases/latest)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/commits/)
 
-Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7 to 3.7.
+Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7.x to 3.7.x.
+
+> Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inaccurate file writing performance check. __Be careful when comparing benchmarks done before and after version 1.3.0!__
 
 ## Availability
 
@@ -14,16 +16,17 @@ Code available at [https://github.com/mikasmart/moodle-report_benchmark](https:/
 
 ### Release notes
 
-* 2019-07-24, version v1.2.0: Compatibility with Moodle 3.7.x. See [release v1.2.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.2.0).
-* 2018-10-28, version v1.1.0: RGPD [Fix #18](https://github.com/mikasmart/moodle-report_benchmark/issues/18) and compatibility with Moodle 3.5 and 3.6
-* 2017-09-07, version v1.0.3: [Fix #13](https://github.com/mikasmart/moodle-report_benchmark/issues/13)
-* 2017-09-07, version v1.0.2: Update & test for moodle 3.2, 3.3
-* 2016-07-08, version v1.0.1: Production version - Moodle Coding style
-* 2016-07-02, version v1.0.0: Production version
-* 2016-06-26, version v0.9-r3 (beta): Pre-production version
-* 2016-06-26, version v0.9-r1 (beta): Preview version - Beta
-* 2016-06-25, version 0.0.1b (alpha): all stuff is now in ./moodle/report/benchmark
-* 2016-06-24, version 0.0.1a (alpha): Preview version - Alpha
+* 2019-07-31, v1.3.0: Fix a sometimes inaccurate file writing performance check. See [release v1.3.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.3.0).
+* 2019-07-24, v1.2.0: Compatibility with Moodle 3.7.x. See [release v1.2.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.2.0).
+* 2018-10-28, v1.1.0: RGPD [Fix #18](https://github.com/mikasmart/moodle-report_benchmark/issues/18) and compatibility with Moodle 3.5 and 3.6
+* 2017-09-07, v1.0.3: [Fix #13](https://github.com/mikasmart/moodle-report_benchmark/issues/13)
+* 2017-09-07, v1.0.2: Update & test for moodle 3.2, 3.3
+* 2016-07-08, v1.0.1: Production version - Moodle Coding style
+* 2016-07-02, v1.0.0: Production version
+* 2016-06-26, v0.9-r3 (beta): Pre-production version
+* 2016-06-26, v0.9-r1 (beta): Preview version - Beta
+* 2016-06-25, v0.0.1b (alpha): all stuff is now in ./moodle/report/benchmark
+* 2016-06-24, v0.0.1a (alpha): Preview version - Alpha
 
 ## Installation
 ### English

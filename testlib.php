@@ -140,8 +140,8 @@ class report_benchmark_test extends report_benchmark {
         while ($i < $pass) {
             ++$i;
             file_put_contents($CFG->tempdir.'/benchmark.temp', $loremipsum);
+            unlink($CFG->tempdir.'/benchmark.temp');
         }
-        unlink($CFG->tempdir.'/benchmark.temp');
 
         return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
 
