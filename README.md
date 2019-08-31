@@ -8,7 +8,7 @@
 
 Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7.x to 3.7.x.
 
-> Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inacurrate file writing performance check. __Be careful comparing benchmark done before and after version 1.3.0!__
+> Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inaccurate file writing performance check. __Be careful comparing benchmark done before and after version 1.3.0!__
 
 ## Availability
 
@@ -16,7 +16,7 @@ Code available at [https://github.com/mikasmart/moodle-report_benchmark](https:/
 
 ### Release notes
 
-* 2019-07-31, v1.3.0, unereleased: Fix for write file test not always accurate.
+* 2019-07-31, v1.3.0: Fix a sometimes inaccurate file writing performance check. See [release v1.3.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.3.0).
 * 2019-07-24, v1.2.0: Compatibility with Moodle 3.7.x. See [release v1.2.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.2.0).
 * 2018-10-28, v1.1.0: RGPD [Fix #18](https://github.com/mikasmart/moodle-report_benchmark/issues/18) and compatibility with Moodle 3.5 and 3.6
 * 2017-09-07, v1.0.3: [Fix #13](https://github.com/mikasmart/moodle-report_benchmark/issues/13)
