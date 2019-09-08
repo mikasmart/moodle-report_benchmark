@@ -42,15 +42,12 @@
  *
  * If you create more tests, please contribute them to the community.
  *
- *
- *
- *
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * BenchMark Test
+ * Benchmark Test
  */
 
 // Define to join the language pack.
@@ -112,14 +109,15 @@ class report_benchmark_test extends report_benchmark {
     public static function fileread() {
         global $CFG;
 
-        file_put_contents($CFG->tempdir.'/benchmark.temp', 'benchmark');
+        $tempfile = make_temp_directory('benchmark') . DIRECTORY_SEPARATOR . 'benchmark.temp';
+        file_put_contents($tempfile, 'benchmark');
         $i      = 0;
         $pass   = 2000;
         while ($i < $pass) {
             ++$i;
-            file_get_contents($CFG->tempdir.'/benchmark.temp');
+            file_get_contents($tempfile);
         }
-        unlink($CFG->tempdir.'/benchmark.temp');
+        unlink($tempfile);
 
         return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
 
@@ -133,14 +131,15 @@ class report_benchmark_test extends report_benchmark {
     public static function filewrite() {
         global $CFG;
 
-        $lorem      = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus felis, dignissim quis nisl sit amet, blandit suscipit lacus. Duis maximus, urna sed fringilla consequat, tellus ex sollicitudin ante, vitae posuere neque purus nec justo. Donec porta ipsum sed urna tempus, sit amet dictum lorem euismod. Phasellus vel erat a libero aliquet venenatis. Phasellus condimentum venenatis risus ut egestas. Morbi sit amet posuere orci, id tempor dui. Vestibulum eget sapien eget mauris eleifend ullamcorper. In finibus mauris id augue fermentum porta. Fusce dictum vestibulum justo eget malesuada. Nullam at tincidunt urna, nec ultrices velit. Nunc eget augue velit. Mauris sed rhoncus purus. Etiam aliquam urna ac nisl tristique, vitae tristique urna tincidunt. Vestibulum luctus nulla magna, non tristique risus rhoncus nec. Vestibulum vestibulum, nulla scelerisque congue molestie, dolor risus hendrerit velit, non malesuada nisi orci eget eros. Aenean interdum ut lectus quis semper. Curabitur viverra vitae augue id.';
+        $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacus felis, dignissim quis nisl sit amet, blandit suscipit lacus. Duis maximus, urna sed fringilla consequat, tellus ex sollicitudin ante, vitae posuere neque purus nec justo. Donec porta ipsum sed urna tempus, sit amet dictum lorem euismod. Phasellus vel erat a libero aliquet venenatis. Phasellus condimentum venenatis risus ut egestas. Morbi sit amet posuere orci, id tempor dui. Vestibulum eget sapien eget mauris eleifend ullamcorper. In finibus mauris id augue fermentum porta. Fusce dictum vestibulum justo eget malesuada. Nullam at tincidunt urna, nec ultrices velit. Nunc eget augue velit. Mauris sed rhoncus purus. Etiam aliquam urna ac nisl tristique, vitae tristique urna tincidunt. Vestibulum luctus nulla magna, non tristique risus rhoncus nec. Vestibulum vestibulum, nulla scelerisque congue molestie, dolor risus hendrerit velit, non malesuada nisi orci eget eros. Aenean interdum ut lectus quis semper. Curabitur viverra vitae augue id.';
         $loremipsum = str_repeat($lorem, 16);
-        $i          = 0;
-        $pass       = 2000;
+        $i = 0;
+        $pass = 2000;
+        $tempfile = make_temp_directory('benchmark') . DIRECTORY_SEPARATOR . 'benchmark.temp';
         while ($i < $pass) {
             ++$i;
-            file_put_contents($CFG->tempdir.'/benchmark.temp', $loremipsum);
-            unlink($CFG->tempdir.'/benchmark.temp');
+            file_put_contents($tempfile, $loremipsum);
+            unlink($tempfile);
         }
 
         return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
@@ -155,8 +154,8 @@ class report_benchmark_test extends report_benchmark {
     public static function courseread() {
         global $DB;
 
-        $i      = 0;
-        $pass   = 500;
+        $i = 0;
+        $pass = 500;
         while ($i < $pass) {
             ++$i;
             $DB->get_record('course', array('id' => SITEID));
