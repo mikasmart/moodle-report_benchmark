@@ -1,4 +1,4 @@
-![Benchmark screenshot](https://github.com/mikasmart/moodle-report_benchmark/blob/master/screenshot.jpg)
+![Benchmark screenshot](https://github.com/mikasmart/moodle-report_benchmark/blob/master/screenshot.png)
 
 # Moodle Benchmark plugin
 
