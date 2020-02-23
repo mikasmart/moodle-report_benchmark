@@ -6,7 +6,7 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/releases/latest)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/commits/)
 
-Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7.x to 3.7.x.
+Performs various performance checks to determine the quality of the Moodle platform. It is compatible with Moodle 2.7.x to 3.8.x.
 
 > Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inaccurate file writing performance check. __Be careful when comparing benchmarks done before and after version 1.3.0!__
 
@@ -16,8 +16,9 @@ Code available at [https://github.com/mikasmart/moodle-report_benchmark](https:/
 
 ### Release notes
 
-* 2019-08-31, v1.3.0: Fix a sometimes inaccurate file writing performance check. See [release v1.3.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.3.0).
-* 2019-07-24, v1.2.0: Compatibility with Moodle 3.7.x. See [release v1.2.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.2.0).
+* 2020-02-24, v1.4.0: Compatibility with Moodle 3.8.x. See [release notes of v1.4.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.4.0).
+* 2019-08-31, v1.3.0: Fix a sometimes inaccurate file writing performance check. See [release notes of v1.3.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.3.0).
+* 2019-07-24, v1.2.0: Compatibility with Moodle 3.7.x. See [release notes of v1.2.0](https://github.com/mikasmart/moodle-report_benchmark/releases/tag/v1.2.0).
 * 2018-10-28, v1.1.0: RGPD [Fix #18](https://github.com/mikasmart/moodle-report_benchmark/issues/18) and compatibility with Moodle 3.5 and 3.6
 * 2017-09-07, v1.0.3: [Fix #13](https://github.com/mikasmart/moodle-report_benchmark/issues/13)
 * 2017-09-07, v1.0.2: Update & test for moodle 3.2, 3.3
@@ -101,7 +102,7 @@ Connectez-vous comme Administrateur, allez à "Administration du site > Rapports
 
 ## License
 
-Copyright ©2016 onwards, Mickaël PANNEQUIN <mickael.pannequin@gmail.com>
+Copyright ©2016 onwards, Mickaël Pannequin <mickael.pannequin@gmail.com>
 
 * All the source code is licensed under GPL 3 or any later version
 * The documentation is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
