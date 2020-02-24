@@ -28,9 +28,9 @@ $string['pluginname']       = 'Moodle Benchmark';
 $string['modulenameplural'] = 'Moodle Benchmarks';
 $string['modulename']       = 'Moodle Benchmark';
 $string['adminreport']      = 'System Benchmark';
-$string['info']             = 'This benchmark should last less than 1 minute and will be aborted at 2 minutes. Please wait until the results show up.';
-$string['infoaverage']      = 'It is recommended to take this test several times to obtain a significant average.';
-$string['infodisclaimer']   = 'It is not recommended to launch this benchmark on a production platform.';
+$string['info']             = 'This benchmark test should last less than 1 minute and will be aborted at 2 minutes. Please wait until the results show up.';
+$string['infoaverage']      = 'It is recommended to perform this benchmark test several times to obtain a significant average. If the performance of your installation is not optimal, you will find some recommendations to improve it in the <a href="https://docs.moodle.org/en/Performance_recommendations" target="_blank">Moodle documentation</a>.';
+$string['infodisclaimer']   = 'Don\'t launch launch this benchmark on a production platform, as it could result in significant performance degradation.';
 $string['start']            = 'Start the benchmark';
 $string['redo']             = 'Start the benchmark again';
 $string['scoremsg']         = 'Benchmark Score:';
@@ -41,9 +41,9 @@ $string['limit']            = 'Acceptable limit';
 $string['over']             = 'Critical limit';
 $string['total']            = 'Total time';
 $string['score']            = 'Score';
-$string['duration']         = '{$a} s';
-$string['benchsuccess']     = '<b>Congratulations!</b><br />Your Moodle performance seems perfect.';
-$string['benchfail']        = '<b>Watch out!</b><br />Your Moodle performance is not optimal.';
+$string['duration']         = '{$a}s';
+$string['benchsuccess']     = '<b>Congratulations!</b><br />The performance of your Moodle installation seems to be perfect.';
+$string['benchfail']        = '<b>Watch out!</b><br />The performance of your Moodle installation is not optimal.';
 $string['benchshare']       = 'Share my score on the forum';
 
 /*
@@ -108,4 +108,4 @@ $string['privacy:no_data_reason']   = 'The report benchmark plugins doesn\'t sto
  * Deprecated strings
  */
 $string['infodisclamer']    = 'It is not recommended to launch this benchmark on a production platform.';
-$string['seconde']          = '{$a} s';
+$string['seconde']          = '{$a}s';
