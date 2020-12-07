@@ -97,7 +97,7 @@ $string['slowdatabaselabel']        = 'The database seems too slow.';
 $string['slowdatabasesolution']     = '<ul><li>Check <a href="https://mariadb.com/kb/en/library/mysqlcheck/" target="_blank">the database integrity</a>.</li><li>Optimize <a href="https://mariadb.com/kb/en/library/optimization-and-tuning/" target="_blank">the database</a>.</li></ul>';
 
 $string['slowweblabel']             = 'The login page is being loaded too slowly.';
-$string['slowwebsolution']          = '<ul><li><a href="/admin/purgecaches.php" target="_blank">Purge the Moodle cache</a>.</li></ul>';
+$string['slowwebsolution']          = '<ul><li><a href="../../admin/purgecaches.php" target="_blank">Purge the Moodle cache</a>.</li></ul>';
 
 /*
  * Privacy provider (GDPR)
