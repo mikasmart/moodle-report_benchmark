@@ -1,6 +1,6 @@
 {
     "name": "mikasmart/moodle-report_benchmark",
-    "type": "moodle-block",
+    "type": "moodle-report",
     "require": {
         "composer/installers": "~1.0"
     },
