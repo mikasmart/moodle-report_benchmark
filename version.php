@@ -30,9 +30,9 @@ if (!isset($plugin)) {
 }
 
 // Plugin informations.
-$plugin->version    = 2021091800; // The current module version (Date: YYYYMMDDXX).
-$plugin->release    = 'v1.4.1-beta';
+$plugin->version    = 2021091801; // The current module version (Date: YYYYMMDDXX).
+$plugin->release    = 'v1.4.1';
 $plugin->requires   = 2011120500; // Requires this Moodle version 2.0 or later.
-$plugin->supported = [20, 311];
-$plugin->maturity   = MATURITY_BETA;
+$plugin->supported  = [27, 311];
+$plugin->maturity   = MATURITY_STABLE;
 $plugin->component  = 'report_benchmark'; // Full name of the plugin (used for diagnostics).
