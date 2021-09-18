@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Version of the benchmark report
+ * Version details of the benchmark report
  *
  * @package    report_benchmark
  * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
@@ -30,8 +30,9 @@ if (!isset($plugin)) {
 }
 
 // Plugin informations.
-$plugin->requires   = 2011120500; // Requires this Moodle version 2.0 or later.
-$plugin->version    = 2020120700; // The current module version (Date: YYYYMMDDXX).
-$plugin->component  = 'report_benchmark'; // Full name of the plugin (used for diagnostics).
-$plugin->maturity   = MATURITY_BETA;
+$plugin->version    = 2021091800; // The current module version (Date: YYYYMMDDXX).
 $plugin->release    = 'v1.4.1-beta';
+$plugin->requires   = 2011120500; // Requires this Moodle version 2.0 or later.
+$plugin->supported = [20, 311];
+$plugin->maturity   = MATURITY_BETA;
+$plugin->component  = 'report_benchmark'; // Full name of the plugin (used for diagnostics).
