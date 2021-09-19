@@ -25,7 +25,7 @@ jobs:
   release-at-moodle-org:
     runs-on: ubuntu-latest
     env:
-      PLUGIN: tool_moodlebox
+      PLUGIN: report_benchmark
       CURL: curl -s
       ENDPOINT: https://moodle.org/webservice/rest/server.php
       TOKEN: ${{ secrets.MOODLE_ORG_TOKEN }}
