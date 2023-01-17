@@ -6,7 +6,7 @@
 [![GitHub Release Date](https://img.shields.io/github/release-date/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/releases/latest)
 [![GitHub last commit](https://img.shields.io/github/last-commit/mikasmart/moodle-report_benchmark.svg)](https://github.com/mikasmart/moodle-report_benchmark/commits/)
 
-Performs various performance checks to determine the quality of the Moodle platform. It is tested against and compatible with Moodle 2.7.x to 4.0.x.
+Performs various performance checks to determine the quality of the Moodle platform. It is tested against and compatible with Moodle 2.7.x to 4.1.x.
 
 > Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inaccurate file writing performance check. __Be careful when comparing benchmarks done before and after version 1.3.0!__
 

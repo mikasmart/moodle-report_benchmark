@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/) and follow principles of [keep a changelog](https://keepachangelog.com).
 
+## Version v1.4.3, 2023-01-17
+- Benchmark plugin was tested successfully against Moodle versions up to 4.1.x.
+- Bug with URL string fixed (#32).
+
 ## Version v1.4.2, 2022-08-09
 - Benchmark plugin was tested successfully against Moodle versions up to 4.0.x.
 
