@@ -170,18 +170,19 @@ class report_benchmark_renderer extends plugin_renderer_base {
         $fails = array();
         foreach ($results as $result) {
             if ($result['during'] >= $result['limit']) {
-                $fails[] = $result['fail'];
+                $fails[] = array('fail' => $result['fail'], 'url' => $result['url']);
             }
         }
-        $fails = array_unique($fails);
+        $fails = array_unique($fails, SORT_REGULAR);
 
         // Display the tips.
         $tips = null;
         foreach ($fails as $fail) {
+            $failurl = new moodle_url($fail['url']);
             $tips .= html_writer::start_tag('h5', null);
-            $tips .= get_string($fail.'label', 'report_benchmark');
+            $tips .= get_string($fail['fail'].'label', 'report_benchmark');
             $tips .= html_writer::end_tag('h5');
-            $tips .= get_string($fail.'solution', 'report_benchmark');
+            $tips .= get_string($fail['fail'].'solution', 'report_benchmark', $failurl->out());
         }
 
         if (empty($tips)) {
