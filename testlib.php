@@ -30,13 +30,14 @@
  *
  *      public static function the_function_name() {
  *          echo 'foo';
- *          return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_BLABLABLA);
+ *          return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_BLABLABLA, 'url' => '/admin/index.php');
  *      }
  *
  * 1) The function must return an array with attributes :
  *      (float)  limit: Time limit too high but acceptable (orange)
  *      (float)  over : Over time, the benchmark fail (red)
  *      (define) fail : To display the good text if the test fail
+ *      (text)   text : URL as parameter for the solution string
  *
  * 2) The function must have strings in language file "/lang/xy/report_benchmark.php"
  *
@@ -77,7 +78,8 @@ class report_benchmark_test extends report_benchmark {
             'over'  => .8,
             'start' => BENCHSTART,
             'stop'  => BENCHSTOP,
-            'fail'  => BENCHFAIL_SLOWSERVER
+            'fail'  => BENCHFAIL_SLOWSERVER,
+            'url'   => ''
         );
 
     }
@@ -97,7 +99,7 @@ class report_benchmark_test extends report_benchmark {
             ++$i;
         }
 
-        return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWPROCESSOR);
+        return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWPROCESSOR, 'url' => '');
 
     }
 
@@ -119,7 +121,7 @@ class report_benchmark_test extends report_benchmark {
         }
         unlink($tempfile);
 
-        return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
+        return array('limit' => .5, 'over' => .8, 'fail' => BENCHFAIL_SLOWHARDDRIVE, 'url' => '');
 
     }
 
@@ -142,7 +144,7 @@ class report_benchmark_test extends report_benchmark {
             unlink($tempfile);
         }
 
-        return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWHARDDRIVE);
+        return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWHARDDRIVE, 'url' => '');
 
     }
 
@@ -161,7 +163,7 @@ class report_benchmark_test extends report_benchmark {
             $DB->get_record('course', array('id' => SITEID));
         }
 
-        return array('limit' => .75, 'over' => 1, 'fail' => BENCHFAIL_SLOWDATABASE);
+        return array('limit' => .75, 'over' => 1, 'fail' => BENCHFAIL_SLOWDATABASE, 'url' => '');
 
     }
 
@@ -190,7 +192,7 @@ class report_benchmark_test extends report_benchmark {
         $DB->delete_records('course', array('shortname' => $newrecord->shortname));
         unset($newrecord);
 
-        return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWDATABASE);
+        return array('limit' => 1, 'over' => 1.25, 'fail' => BENCHFAIL_SLOWDATABASE, 'url' => '');
 
     }
 
@@ -252,7 +254,7 @@ class report_benchmark_test extends report_benchmark {
             $DB->get_records_sql($sql);
         }
 
-        return array('limit' => .5, 'over' => .7, 'fail' => BENCHFAIL_SLOWDATABASE);
+        return array('limit' => .5, 'over' => .7, 'fail' => BENCHFAIL_SLOWDATABASE, 'url' => '');
 
     }
 
@@ -287,7 +289,7 @@ class report_benchmark_test extends report_benchmark {
             $DB->get_records_sql($sql);
         }
 
-        return array('limit' => .3, 'over' => .5, 'fail' => BENCHFAIL_SLOWDATABASE);
+        return array('limit' => .3, 'over' => .5, 'fail' => BENCHFAIL_SLOWDATABASE, 'url' => '');
 
     }
 

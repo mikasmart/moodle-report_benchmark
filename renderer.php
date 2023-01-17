@@ -178,10 +178,11 @@ class report_benchmark_renderer extends plugin_renderer_base {
         // Display the tips.
         $tips = null;
         foreach ($fails as $fail) {
+            $failurl = new moodle_url($fail['url']);
             $tips .= html_writer::start_tag('h5', null);
             $tips .= get_string($fail['fail'].'label', 'report_benchmark');
             $tips .= html_writer::end_tag('h5');
-            $tips .= get_string($fail['fail'].'solution', 'report_benchmark', $fail['url']);
+            $tips .= get_string($fail['fail'].'solution', 'report_benchmark', $failurl->out());
         }
 
         if (empty($tips)) {
