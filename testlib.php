@@ -302,7 +302,7 @@ class report_benchmark_test extends report_benchmark {
         $fakeuser = array('username' => 'guest', 'password' => 'guest');
         download_file_content($CFG->wwwroot.'/login/index.php', null, $fakeuser);
 
-        return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
+        return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB, 'url' => '/admin/purgecaches.php');
 
     }
 
@@ -334,7 +334,7 @@ class report_benchmark_test extends report_benchmark {
         $DB->delete_records('user', array('id' => $user->id));
         unset($user);
 
-        return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB);
+        return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB, 'url' => '/admin/purgecaches.php');
 
     }
 
