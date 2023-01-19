@@ -99,7 +99,7 @@ $string['slowwebsolution'] = '<ul><li><a href="{$a}" target="_blank">Purge the M
 /*
  * Privacy provider (GDPR)
  */
-$string['privacy:no_data_reason'] = 'The report benchmark plugins doesn\'t store data by itself. It just access to data from other plugins';
+$string['privacy:no_data_reason'] = 'The Benchmark report plugin doesn\'t store any personal data.';
 
 /*
  * Deprecated strings
