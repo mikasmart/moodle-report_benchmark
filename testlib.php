@@ -294,47 +294,14 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Time to connect with the guest account
+     * Time to download admin notification page
      *
      * @return array Contains the test results
      */
-    public static function loginguest() {
+    public static function notificatiopagedownload() {
         global $CFG;
 
-        $fakeuser = array('username' => 'guest', 'password' => 'guest');
-        download_file_content($CFG->wwwroot.'/login/index.php', null, $fakeuser);
-
-        return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB, 'url' => '/admin/purgecaches.php');
-
-    }
-
-    /**
-     * Time to connect with the user account
-     *
-     * @return array Contains the test results
-     */
-    public static function loginuser() {
-        global $CFG, $DB;
-
-        // Create a fake user.
-        $user               = new stdClass();
-        $user->auth         = 'manual';
-        $user->confirmed    = 1;
-        $user->mnethostid   = 1;
-        $user->email        = 'benchtest@benchtest.com';
-        $user->username     = 'benchtest';
-        $user->password     = md5('benchtest');
-        $user->lastname     = 'benchtest';
-        $user->firstname    = 'benchtest';
-        $user->id           = $DB->insert_record('user', $user);
-
-        // Download login page.
-        $fakeuser = array('username' => $user->username, 'password' => 'benchtest');
-        download_file_content($CFG->wwwroot.'/login/index.php', null, $fakeuser);
-
-        // Delete fake user.
-        $DB->delete_records('user', array('id' => $user->id));
-        unset($user);
+        download_file_content($CFG->wwwroot.'/admin/index.php?cache=1');
 
         return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB, 'url' => '/admin/purgecaches.php');
 
