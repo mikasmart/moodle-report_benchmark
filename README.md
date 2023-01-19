@@ -8,7 +8,7 @@
 
 Performs various performance checks to determine the quality of the Moodle platform. It is tested against and compatible with Moodle 2.7.x to 4.1.x.
 
-> Benchmark result calculation was updated as of plugin version 1.3.0, to fix a sometimes inaccurate file writing performance check. __Be careful when comparing benchmarks done before and after version 1.3.0!__
+> Version 1.5.0 of the plugin replaced 2 invalid tests (guest and fake account login performance) with a new one (notification page of Moodle administration). __Be careful when comparing benchmarks done before and after version 1.5.0!__
 
 ## Availability
 
@@ -80,7 +80,7 @@ Connectez-vous comme Administrateur, allez à "Administration du site > Rapports
 
 * To the [Moodle community](https://moodle.org/) and specially the [reviewers](https://moodle.org/mod/forum/discuss.php?d=335357)
 * To Nicolas Martignoni, for help, time and perspective
-* To Jean Fruitet, for help, time and traduction
+* To Jean Fruitet, for help, time and translation
 * To [Martin Dougiamas](https://en.wikipedia.org/wiki/Martin_Dougiamas), for giving us Moodle
 
 ## Benchmark records
