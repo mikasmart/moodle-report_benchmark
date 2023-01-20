@@ -18,7 +18,7 @@
  * Strings for component 'report_benchmark', the Benchmark report, english
  *
  * @package    report_benchmark
- * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
+ * @copyright  2016 onwards Mickaël Pannequin {@link m.pannequin@xperteam.fr}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 

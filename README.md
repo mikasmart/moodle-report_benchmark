@@ -69,7 +69,7 @@ Log into your Moodle site as an administrator, go to "Site Administration > Repo
 
 ## License
 
-Copyright ©2016 onwards, Mickaël Pannequin <mickael.pannequin@gmail.com>
+Copyright ©2016 onwards, Mickaël Pannequin <m.pannequin@xperteam.fr>
 
 - All the source code is licensed under GPL 3 or any later version
 - The documentation is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
