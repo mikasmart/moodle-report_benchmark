@@ -33,11 +33,10 @@ See [Release notes](https://github.com/mikasmart/moodle-report_benchmark/blob/ma
 ### Manually
 
 - [Download the zip](https://github.com/mikasmart/moodle-report_benchmark/archive/master.zip)
-- Open the zip and rename the folder *benchmark-master* to *benchmark*
 - Log into your Moodle site as an administrator
 - Go to "Site Administration > Plugins > Install plugins"
-- Upload the zip file into the box *ZIP package*
-- Click on *Install plugin from the ZIP file*
+- Drag and drop the zip file to the field __ZIP package__
+- Click on __Install plugin from the ZIP file__
 - Follow the instructions given by Moodle
 
 ## Usage
@@ -60,12 +59,6 @@ Log into your Moodle site as an administrator, go to "Site Administration > Repo
 - To Nicolas Martignoni, for help, time and perspective
 - To Jean Fruitet, for help, time and translation
 - To [Martin Dougiamas](https://en.wikipedia.org/wiki/Martin_Dougiamas), for giving us Moodle
-
-## Benchmark records
-
-- 1st : Sergio Rabellino - 21 points
-- 2nd : Richard Oelmann - 90 points
-- 3rd : Usman Asar - 93 points
 
 ## License
 
