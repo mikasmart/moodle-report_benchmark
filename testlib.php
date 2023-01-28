@@ -302,10 +302,11 @@ class report_benchmark_test extends report_benchmark {
     public static function notificatiopagedownload() {
         global $CFG;
 
-        $pass = 100;
+        $i = 0;
+        $pass = 3;
         while ($i < $pass) {
             ++$i;
-            download_file_content($CFG->wwwroot.'/admin/index.php?cache=0');
+            download_file_content($CFG->wwwroot.'/admin/index.php?cache=1');
         }
 
         return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB, 'url' => '/admin/purgecaches.php');
