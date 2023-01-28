@@ -19,6 +19,7 @@
  *
  * @package    report_benchmark
  * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
+ * @copyright  2023 onwards Nicolas Martignoni {@link nicolas@martignoni.net}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -104,8 +105,6 @@ $string['privacy:no_data_reason'] = 'The Benchmark report plugin doesn\'t store 
 /*
  * Deprecated strings
  */
-$string['infodisclamer'] = 'It is not recommended to launch this benchmark on a production platform.';
-$string['seconde'] = '{$a}s';
 $string['loginguestname'] = 'Login time performance for the guest account';
 $string['loginguestmoreinfo'] = 'Check the loading time of the guest account login page';
 $string['loginusername'] = 'Login time performance for a fake user account';

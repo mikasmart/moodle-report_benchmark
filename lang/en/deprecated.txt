@@ -1,5 +1,3 @@
-infodisclamer,report_benchmark
-seconde,report_benchmark
 loginguestname,report_benchmark
 loginguestmoreinfo,report_benchmark
 loginusername,report_benchmark
