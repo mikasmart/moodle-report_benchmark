@@ -19,6 +19,7 @@
  *
  * @package    report_benchmark
  * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
+ * @copyright  2023 onwards Nicolas Martignoni {@link nicolas@martignoni.net}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * HOW TO CREATE A TEST
@@ -34,12 +35,12 @@
  *      }
  *
  * 1) The function must return an array with attributes :
- *      (float)  limit: Time limit too high but acceptable (orange)
- *      (float)  over : Over time, the benchmark fail (red)
- *      (define) fail : To display the good text if the test fail
- *      (text)   text : URL as parameter for the solution string
+ *      (float) limit: Time limit too high but acceptable (orange).
+ *      (float) over : Over time, the benchmark fail (red).
+ *      (define) fail : To display the good text if the test fail.
+ *      (text) text : URL as parameter for the solution string.
  *
- * 2) The function must have strings in language file "/lang/xy/report_benchmark.php"
+ * 2) The function must have strings adequately defined in language file.
  *
  * If you create more tests, please contribute them to the community.
  *
@@ -52,11 +53,11 @@ defined('MOODLE_INTERNAL') || die();
  */
 
 // Define to join the language pack.
-define('BENCHFAIL_SLOWSERVER',      'slowserver');
-define('BENCHFAIL_SLOWPROCESSOR',   'slowprocessor');
-define('BENCHFAIL_SLOWHARDDRIVE',   'slowharddrive');
-define('BENCHFAIL_SLOWDATABASE',    'slowdatabase');
-define('BENCHFAIL_SLOWWEB',         'slowweb');
+define('BENCHFAIL_SLOWSERVER', 'slowserver');
+define('BENCHFAIL_SLOWPROCESSOR', 'slowprocessor');
+define('BENCHFAIL_SLOWHARDDRIVE', 'slowharddrive');
+define('BENCHFAIL_SLOWDATABASE', 'slowdatabase');
+define('BENCHFAIL_SLOWWEB', 'slowweb');
 
 /**
  * Tests for the BenchMark report
@@ -67,7 +68,7 @@ define('BENCHFAIL_SLOWWEB',         'slowweb');
 class report_benchmark_test extends report_benchmark {
 
     /**
-     * Moodle loading time
+     * Moodle configuration file (config.php) loading time
      *
      * @return array Contains the test results
      */
@@ -85,7 +86,7 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Function called many times
+     * Stress processor by looping many times
      *
      * @return array Contains the test results
      */
@@ -104,7 +105,7 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Reading files in the Moodle's temporary folder
+     * Read many files from the Moodle's temporary shared folder
      *
      * @return array Contains the test results
      */
@@ -113,8 +114,8 @@ class report_benchmark_test extends report_benchmark {
 
         $tempfile = make_temp_directory('benchmark') . DIRECTORY_SEPARATOR . 'benchmark.temp';
         file_put_contents($tempfile, 'benchmark');
-        $i      = 0;
-        $pass   = 2000;
+        $i = 0;
+        $pass = 2000;
         while ($i < $pass) {
             ++$i;
             file_get_contents($tempfile);
@@ -126,7 +127,7 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Creating files in the Moodle's temporary folder
+     * Create many files in the Moodle's temporary shared folder
      *
      * @return array Contains the test results
      */
@@ -149,7 +150,7 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Reading course
+     * Read the homepage course many times
      *
      * @return array Contains the test results
      */
@@ -168,23 +169,23 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Writing course
+     * Create a new course many times
      *
      * @return array Contains the test results
      */
     public static function coursewrite() {
         global $DB;
 
-        $uniq                   = md5(uniqid(rand(), true));
-        $newrecord              = new stdClass;
-        $newrecord->shortname   = '!!!BENCH-'.$uniq;
-        $newrecord->fullname    = '!!!BENCH-'.$uniq;
-        $newrecord->format      = 'site';
-        $newrecord->visible     = 0;
-        $newrecord->sortorder   = 0;
+        $uniq = md5(uniqid(rand(), true));
+        $newrecord = new stdClass;
+        $newrecord->shortname = '!!!BENCH-'.$uniq;
+        $newrecord->fullname = '!!!BENCH-'.$uniq;
+        $newrecord->format = 'site';
+        $newrecord->visible = 0;
+        $newrecord->sortorder = 0;
 
-        $i      = 0;
-        $pass   = 25;
+        $i = 0;
+        $pass = 25;
         while ($i < $pass) {
             ++$i;
             $DB->insert_record('course', $newrecord);
@@ -197,15 +198,15 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Complex request (n°1)
+     * Execute many times a complex DB request (n°1)
      *
      * @return array Contains the test results
      */
     public static function querytype1() {
         global $DB;
 
-        $i      = 0;
-        $sql    = "SELECT bi.id,
+        $i = 0;
+        $sql = "SELECT bi.id,
                          bp.id AS blockpositionid,
                          bi.blockname,
                          bi.parentcontextid,
@@ -248,7 +249,7 @@ class report_benchmark_test extends report_benchmark {
                 ORDER BY COALESCE (bp.region, bi.defaultregion),
                          COALESCE (bp.weight, bi.defaultweight),
                          bi.id";
-        $pass   = 100;
+        $pass = 100;
         while ($i < $pass) {
             ++$i;
             $DB->get_records_sql($sql);
@@ -259,7 +260,7 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Complex request (n°2)
+     * Execute many times another complex DB request (n°2)
      *
      * @return array Contains the test results
      */
@@ -273,7 +274,7 @@ class report_benchmark_test extends report_benchmark {
                   FROM (SELECT f.filter,
                                MAX(f.sortorder) AS sortorder,
                                CASE WHEN MAX(f.active * ctx.depth) > -MIN(f.active * ctx.depth)
-                               THEN 1 ELSE - 1 END  AS inheritedstate
+                               THEN 1 ELSE - 1 END AS inheritedstate
                           FROM {filter_active} f
                           JOIN {context} ctx ON f.contextid = ctx.id
                          WHERE ctx.id IN (1, 3, 16)
@@ -294,14 +295,18 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Time to download admin notification page
+     * Download several times the admin notification page
      *
      * @return array Contains the test results
      */
     public static function notificatiopagedownload() {
         global $CFG;
 
-        download_file_content($CFG->wwwroot.'/admin/index.php?cache=1');
+        $pass = 100;
+        while ($i < $pass) {
+            ++$i;
+            download_file_content($CFG->wwwroot.'/admin/index.php?cache=0');
+        }
 
         return array('limit' => .3, 'over' => .8, 'fail' => BENCHFAIL_SLOWWEB, 'url' => '/admin/purgecaches.php');
 
