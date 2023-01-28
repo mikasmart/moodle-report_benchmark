@@ -295,7 +295,7 @@ class report_benchmark_test extends report_benchmark {
     }
 
     /**
-     * Download several times the admin notification page
+     * Download a few times the admin notification page (cached!)
      *
      * @return array Contains the test results
      */
