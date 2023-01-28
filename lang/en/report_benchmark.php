@@ -76,7 +76,7 @@ $string['querytype2name'] = 'Database performance (#2)';
 $string['querytype2moreinfo'] = 'Run a complex SQL query to check the speed of the database';
 
 $string['notificatiopagedownloadname'] = 'Loading time of administration notification page';
-$string['notificatiopagedownloadmoreinfo'] = 'Load the administration interface notification page multiple times to check web server speed';
+$string['notificatiopagedownloadmoreinfo'] = 'Load the administration interface notification page a few times to check web server speed';
 
 /*
  * Add your solution here
