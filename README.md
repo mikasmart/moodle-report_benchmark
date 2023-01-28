@@ -8,7 +8,7 @@
 
 Performs various performance checks to determine the quality of the Moodle platform. Benchmark plugin is tested against and compatible with Moodle 2.7.x to 4.1.x.
 
-> Version 1.5.0 of the plugin replaced 2 invalid tests (guest and fake account login performance) with a new one (notification page of Moodle administration). __Be careful when comparing benchmarks done before and after version 1.5.0!__
+> Version 1.5.1 of the plugin replaced 2 invalid tests (guest and fake account login performance) with a new one (notification page of Moodle administration). __Be careful when comparing benchmarks done before and after version 1.5.1!__
 
 ## Availability
 
@@ -63,6 +63,7 @@ Log into your Moodle site as an administrator, go to "Site Administration > Repo
 ## License
 
 Copyright ©2016 onwards, Mickaël Pannequin <mickael.pannequin@gmail.com>
+Copyright ©2023 onwards, Nicolas Martignoni <nicolas@martignoni.net>
 
 - All the source code is licensed under GPL 3 or any later version
 - The documentation is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/) and follow principles of [keep a changelog](https://keepachangelog.com).
 
+## Version v1.5.1, 2023-01-28
+- Update new test to be more meaningful (see issue #37). Beware! New metrics aren't strictly comparable with older ones.
+- Remove older deprecated strings (#41).
+
 ## Version v1.5.0, 2023-01-19
 - Bug with invalid tests fixed (#37). Beware! New metrics aren't strictly comparable with older ones.
 
