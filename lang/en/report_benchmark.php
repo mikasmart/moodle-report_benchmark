@@ -28,9 +28,9 @@ $string['pluginname'] = 'Moodle Benchmark';
 $string['modulenameplural'] = 'Moodle Benchmarks';
 $string['modulename'] = 'Moodle Benchmark';
 $string['adminreport'] = 'System Benchmark';
-$string['info'] = 'This benchmark test should last less than 1 minute and will be aborted at 2 minutes. Please wait until the results show up.';
-$string['infoaverage'] = 'It is recommended to perform this benchmark test several times to obtain a significant average. If the performance of your installation is not optimal, you will find some recommendations to improve it in the <a href="https://docs.moodle.org/en/Performance_recommendations" target="_blank">Moodle documentation</a>.';
-$string['infodisclaimer'] = 'Don\'t launch launch this benchmark on a production platform, as it could result in significant performance degradation.';
+$string['info'] = 'This benchmark test should last less than 1 minute and will be aborted after 2 minutes. Please wait for the results to be displayed.';
+$string['infoaverage'] = 'It is recommended to perform this benchmark test several times to obtain a meaningful average. If the performance of your installation is not optimal, you will find recommendations to improve it in the <a href="https://docs.moodle.org/en/Performance_recommendations" target="_blank">Moodle documentation</a>.';
+$string['infodisclaimer'] = 'Do not run this benchmark on a production platformas it may cause significant performance degradation.';
 $string['start'] = 'Start the benchmark';
 $string['redo'] = 'Start the benchmark again';
 $string['scoremsg'] = 'Benchmark Score:';
@@ -44,7 +44,7 @@ $string['score'] = 'Score';
 $string['duration'] = '{$a}s';
 $string['benchsuccess'] = '<b>Congratulations!</b><br />The performance of your Moodle installation seems to be perfect.';
 $string['benchfail'] = '<b>Watch out!</b><br />The performance of your Moodle installation is not optimal.';
-$string['benchshare'] = 'Share my score on the forum';
+$string['benchshare'] = 'Share this score on the forum';
 
 /*
  * Add your test below
@@ -75,7 +75,7 @@ $string['querytype2name'] = 'Database performance (#2)';
 $string['querytype2moreinfo'] = 'Run a complex SQL query to check the speed of the database';
 
 $string['notificatiopagedownloadname'] = 'Loading time of administration notification page';
-$string['notificatiopagedownloadmoreinfo'] = 'Load the administration interface notification page to check web server speed';
+$string['notificatiopagedownloadmoreinfo'] = 'Load the administration interface notification page multiple times to check web server speed';
 
 /*
  * Add your solution here
@@ -93,7 +93,7 @@ $string['slowharddrivesolution'] = '<ul><li>Check the status of the hard drive a
 $string['slowdatabaselabel'] = 'The database seems too slow.';
 $string['slowdatabasesolution'] = '<ul><li>Check <a href="https://mariadb.com/kb/en/library/mysqlcheck/" target="_blank">the database integrity</a>.</li><li>Optimize <a href="https://mariadb.com/kb/en/library/optimization-and-tuning/" target="_blank">the database</a>.</li></ul>';
 
-$string['slowweblabel'] = 'The login page is being loaded too slowly.';
+$string['slowweblabel'] = 'The notification page is loading too slowly.';
 $string['slowwebsolution'] = '<ul><li><a href="{$a}" target="_blank">Purge the Moodle cache</a>.</li></ul>';
 
 /*
