@@ -1,0 +1,10 @@
+{
+    "name": "mikasmart/moodle-report_benchmark",
+    "type": "moodle-report",
+    "require": {
+        "composer/installers": "~1.0"
+    },
+    "extra": {
+        "installer-name": "benchmark"
+    }
+}
