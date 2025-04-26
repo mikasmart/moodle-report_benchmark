@@ -101,12 +101,3 @@ $string['slowwebsolution'] = '<ul><li><a href="{$a}" target="_blank">Purge the M
  * Privacy provider (GDPR)
  */
 $string['privacy:no_data_reason'] = 'The Benchmark report plugin doesn\'t store any personal data.';
-
-/*
- * Deprecated strings
- */
-$string['loginguestname'] = 'Login time performance for the guest account';
-$string['loginguestmoreinfo'] = 'Check the loading time of the guest account login page';
-$string['loginusername'] = 'Login time performance for a fake user account';
-$string['loginusermoreinfo'] = 'Check the loading time of a fake user account login page';
-
