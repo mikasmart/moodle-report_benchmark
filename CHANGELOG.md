@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](https://semver.org/) and follow pr
 
 ## Version v1.5.2, 2025-04-26
 - Benchmark plugin was tested successfully against Moodle versions up to 5.0.x, included versions 4.x.x. (#42).
+- Remove older deprecated strings (no issue number).
 
 ## Version v1.5.1, 2023-01-28
 - Update new test to be more meaningful (see issue #37). Beware! New metrics aren't strictly comparable with older ones.
