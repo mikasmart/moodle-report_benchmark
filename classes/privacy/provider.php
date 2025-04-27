@@ -24,8 +24,6 @@
 
 namespace report_benchmark\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Privacy Subsystem for report_benchmark implementing null_provider.
  *

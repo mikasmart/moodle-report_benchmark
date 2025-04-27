@@ -25,8 +25,6 @@
  * @see testlib.php
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Utility class for report_benchmark
  *
