@@ -18,8 +18,8 @@
  * Declare all tests for the benchmark
  *
  * @package    report_benchmark
- * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
- * @copyright  2023 onwards Nicolas Martignoni {@link nicolas@martignoni.net}
+ * @copyright  2016 onwards Mickaël Pannequin {@link mailto:mickael.pannequin@gmail.com}
+ * @copyright  2023 onwards Nicolas Martignoni {@link mailto:nicolas@martignoni.net}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * HOW TO CREATE A TEST
@@ -60,7 +60,7 @@ define('BENCHFAIL_SLOWWEB', 'slowweb');
 /**
  * Tests for the BenchMark report
  *
- * @copyright  2016 onwards Mickaël Pannequin {@link mickael.pannequin@gmail.com}
+ * @copyright  2016 onwards Mickaël Pannequin {@link mailto:mickael.pannequin@gmail.com}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class report_benchmark_test extends report_benchmark {

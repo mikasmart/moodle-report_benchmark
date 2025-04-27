@@ -18,7 +18,7 @@
  * Privacy Subsystem implementation for report_benchmark.
  *
  * @package    report_benchmark
- * @copyright  2018 Olivier Secret {@link olivier.secret@catalyst-au.net}
+ * @copyright  2018 Olivier Secret {@link mailto:olivier.secret@catalyst-au.net}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
@@ -28,7 +28,7 @@ namespace report_benchmark\privacy;
  * Privacy Subsystem for report_benchmark implementing null_provider.
  *
  * This plugin does not store any personal user data.
- * @copyright  2018 Olivier Secret {@link olivier.secret@catalyst-au.net}
+ * @copyright  2018 Olivier Secret {@link mailto:olivier.secret@catalyst-au.net}
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class provider implements \core_privacy\local\metadata\null_provider {
