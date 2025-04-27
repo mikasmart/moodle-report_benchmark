@@ -24,6 +24,9 @@
  */
 
 // Timeout at 2 minutes.
+// Let codechecker ignore the next line because we need config.php to
+// be loaded a bit later.
+// phpcs:disable moodle.Files.MoodleInternal.MoodleInternalGlobalState
 set_time_limit(120);
 
 define('NO_OUTPUT_BUFFERING', true);
