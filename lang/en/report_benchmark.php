@@ -25,8 +25,8 @@
 
 $string['adminreport'] = 'System Benchmark';
 $string['benchfail'] = '<b>Watch out!</b><br />The performance of your Moodle installation is not optimal.';
-$string['benchmark:view'] = 'View the Benchmark report';
 $string['benchmark'] = 'Benchmark';
+$string['benchmark:view'] = 'View the Benchmark report';
 $string['benchshare'] = 'Share this score on the forum';
 $string['benchsuccess'] = '<b>Congratulations!</b><br />The performance of your Moodle installation seems to be perfect.';
 $string['cloadmoreinfo'] = 'Load the "config.php" configuration file';

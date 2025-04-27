@@ -51,8 +51,8 @@ class report_benchmark_renderer extends plugin_renderer_base {
 
         // Button to start the test.
         $out .= html_writer::start_div('continuebutton');
-        $out .= html_writer::link(new moodle_url('/report/benchmark/index.php', array('step' => 'run')),
-                get_string('start', 'report_benchmark'), array('class' => 'btn btn-primary'));
+        $out .= html_writer::link(new moodle_url('/report/benchmark/index.php', ['step' => 'run']),
+                get_string('start', 'report_benchmark'), ['class' => 'btn btn-primary']);
         $out .= html_writer::end_div();
 
         // Footer.
@@ -76,7 +76,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
         // Header.
         $out  = $this->output->header();
         $out .= $this->output->heading(get_string('adminreport', 'report_benchmark'));
-        $out .= html_writer::start_div(null, array('id' => 'benchmark'));
+        $out .= html_writer::start_div(null, ['id' => 'benchmark']);
 
         // Header string table.
         $strdesc    = get_string('description', 'report_benchmark');
@@ -104,8 +104,8 @@ class report_benchmark_renderer extends plugin_renderer_base {
 
         // Display all tests with details in table.
         $table = new html_table();
-        $table->head  = array('#', $strdesc, $strduring, $strlimit, $strover);
-        $table->attributes = array('class' => 'admintable benchmarkresult generaltable');
+        $table->head  = ['#', $strdesc, $strduring, $strlimit, $strover];
+        $table->attributes = ['class' => 'admintable benchmarkresult generaltable'];
         $table->id = 'benchmarkresult';
 
         foreach ($results as $result) {
@@ -167,10 +167,10 @@ class report_benchmark_renderer extends plugin_renderer_base {
         $out .= html_writer::table($table);
 
         // Contruct and return the fail array without duplicate values.
-        $fails = array();
+        $fails = [];
         foreach ($results as $result) {
             if ($result['during'] >= $result['limit']) {
-                $fails[] = array('fail' => $result['fail'], 'url' => $result['url']);
+                $fails[] = ['fail' => $result['fail'], 'url' => $result['url']];
             }
         }
         $fails = array_unique($fails, SORT_REGULAR);
@@ -186,11 +186,11 @@ class report_benchmark_renderer extends plugin_renderer_base {
         }
 
         if (empty($tips)) {
-            $out .= html_writer::start_div('alert alert-success', array('role' => 'alert'));
+            $out .= html_writer::start_div('alert alert-success', ['role' => 'alert']);
             $out .= get_string('benchsuccess', 'report_benchmark');
             $out .= html_writer::end_div();
         } else {
-            $out .= html_writer::start_div('alert alert-warning', array('role' => 'alert'));
+            $out .= html_writer::start_div('alert alert-warning', ['role' => 'alert']);
             $out .= get_string('benchfail', 'report_benchmark');
             $out .= $tips;
             $out .= html_writer::end_div();
@@ -199,11 +199,11 @@ class report_benchmark_renderer extends plugin_renderer_base {
         // Display the share and redo button.
         $out .= html_writer::start_div('continuebutton');
 
-        $out .= html_writer::link(new moodle_url('https://moodle.org/mod/forum/discuss.php', array('d' => '335282')),
-            get_string('benchshare', 'report_benchmark'), array('class' => 'btn btn-default', 'target' => '_blank'));
+        $out .= html_writer::link(new moodle_url('https://moodle.org/mod/forum/discuss.php', ['d' => '335282']),
+            get_string('benchshare', 'report_benchmark'), ['class' => 'btn btn-default', 'target' => '_blank']);
 
-        $out .= html_writer::link(new moodle_url('/report/benchmark/index.php', array('step' => 'run')),
-            get_string('redo', 'report_benchmark'), array('class' => 'btn btn-primary'));
+        $out .= html_writer::link(new moodle_url('/report/benchmark/index.php', ['step' => 'run']),
+            get_string('redo', 'report_benchmark'), ['class' => 'btn btn-primary']);
 
         $out .= html_writer::end_div();
 

@@ -25,14 +25,16 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-    'report/benchmark:view' => array(
+$capabilities = [
+
+    'report/benchmark:view' => [
         'riskbitmask' => RISK_DATALOSS,
         'captype' => 'read',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'manager' => CAP_ALLOW
-        ),
-        'clonepermissionsfrom' => 'report/performance:view'
-    )
-);
+        'archetypes' => [
+            'manager' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'report/performance:view',
+    ],
+
+];

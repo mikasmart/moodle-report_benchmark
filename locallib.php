@@ -40,7 +40,7 @@ class report_benchmark {
      *
      * @var array Benchmark results.
      */
-    private $results = array();
+    private $results = [];
 
     /**
      * benchmark constructor.
@@ -49,7 +49,7 @@ class report_benchmark {
 
         // Get the list of test.
         $tests  = $this->get_tests();
-        $benchs = array();
+        $benchs = [];
         $idtest = 0;
 
         foreach ($tests as $name) {
@@ -104,7 +104,7 @@ class report_benchmark {
     private function get_tests() {
 
         // Get the list of all static method in the class benchmark_test.
-        $tests      = array();
+        $tests      = [];
         $class      = new ReflectionClass(__CLASS__.'_test');
         $methods    = $class->getMethods(ReflectionMethod::IS_STATIC);
 
