@@ -70,13 +70,13 @@ class report_benchmark {
             $stop      = round($overstop - $overstart, 3);
 
             // Store and merge result.
-            $benchs[$name] = array(
+            $benchs[$name] = [
                     'during'    => $stop,
                     'id'        => $idtest,
                     'class'     => $this->get_feedback_class($stop, $result['limit'], $result['over']),
                     'name'      => get_string($name.'name', 'report_benchmark'),
                     'info'      => get_string($name.'moreinfo', 'report_benchmark'),
-                ) + $result;
+                ] + $result;
         }
 
         // Store all results.
@@ -92,7 +92,7 @@ class report_benchmark {
      */
     private function start_test($name) {
 
-        return call_user_func(array('report_benchmark_test', $name));
+        return call_user_func(['report_benchmark_test', $name]);
 
     }
 
@@ -163,10 +163,10 @@ class report_benchmark {
             $total += $result['during'];
         }
 
-        return array(
+        return [
             'total' => $total,
             'score' => ceil($total * 100),
-        );
+        ];
 
     }
 

@@ -94,7 +94,7 @@ class report_benchmark_test extends report_benchmark {
 
         $pass = 10000000;
         for ($i = 0; $i < $pass; ++$i) {
-          ; // No-op.
+            ; // No-op.
         };
         $i = 0;
         while ($i < $pass) {
