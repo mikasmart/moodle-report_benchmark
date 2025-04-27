@@ -33,7 +33,7 @@ define('NO_OUTPUT_BUFFERING', true);
 
 // Required config and set markers for the 1st test.
 define('BENCHSTART', microtime(true));
-require_once(dirname(dirname(dirname(dirname(__FILE__)))).'/config.php');
+require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 define('BENCHSTOP', microtime(true));
 
 // Required files.
