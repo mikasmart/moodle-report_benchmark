@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/) and follow principles of [keep a changelog](https://keepachangelog.com).
 
+## Version v1.5.3, 2025-04-27
+- Fix all coding style problems (no issue number).
+
 ## Version v1.5.2, 2025-04-26
 - Benchmark plugin was tested successfully against Moodle versions up to 5.0.x, included versions 4.x.x. (#42).
 - Remove older deprecated strings (no issue number).
