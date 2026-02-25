@@ -50,7 +50,8 @@ class report_benchmark_renderer extends plugin_renderer_base {
         $out .= html_writer::start_div('continuebutton');
         $out .= html_writer::link(
             new moodle_url('/report/benchmark/index.php', ['step' => 'run']),
-            get_string('start', 'report_benchmark'), ['class' => 'btn btn-primary']
+            get_string('start', 'report_benchmark'),
+            ['class' => 'btn btn-primary']
         );
         $out .= html_writer::end_div();
 
@@ -197,12 +198,14 @@ class report_benchmark_renderer extends plugin_renderer_base {
 
         $out .= html_writer::link(
             new moodle_url('https://moodle.org/mod/forum/discuss.php', ['d' => '335282']),
-            get_string('benchshare', 'report_benchmark'), ['class' => 'btn btn-default', 'target' => '_blank']
+            get_string('benchshare', 'report_benchmark'),
+            ['class' => 'btn btn-default', 'target' => '_blank']
         );
 
         $out .= html_writer::link(
             new moodle_url('/report/benchmark/index.php', ['step' => 'run']),
-            get_string('redo', 'report_benchmark'), ['class' => 'btn btn-primary']
+            get_string('redo', 'report_benchmark'),
+            ['class' => 'btn btn-primary']
         );
 
         $out .= html_writer::end_div();
