@@ -24,9 +24,15 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$ADMIN->add('reports',
-        new admin_externalpage('reportbenchmark', get_string('benchmark', 'report_benchmark'),
-        $CFG->wwwroot.'/report/benchmark/index.php', 'moodle/site:config'));
+$ADMIN->add(
+    'reports',
+    new admin_externalpage(
+        'reportbenchmark',
+        get_string('benchmark', 'report_benchmark'),
+        $CFG->wwwroot . '/report/benchmark/index.php',
+        'moodle/site:config'
+    )
+);
 
 // No report settings Moodle 2.2.
 $settings = null;

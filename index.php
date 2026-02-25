@@ -33,13 +33,13 @@ define('NO_OUTPUT_BUFFERING', true);
 
 // Required config and set markers for the 1st test.
 define('BENCHSTART', microtime(true));
-require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
+require_once(dirname(dirname(dirname(__FILE__))) . '/config.php');
 define('BENCHSTOP', microtime(true));
 
 // Required files.
-require_once($CFG->libdir .'/adminlib.php');
-require_once($CFG->dirroot.'/report/benchmark/locallib.php');
-require_once($CFG->dirroot.'/report/benchmark/testlib.php');
+require_once($CFG->libdir . '/adminlib.php');
+require_once($CFG->dirroot . '/report/benchmark/locallib.php');
+require_once($CFG->dirroot . '/report/benchmark/testlib.php');
 
 // Login and check capabilities.
 require_login();

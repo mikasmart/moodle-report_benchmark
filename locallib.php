@@ -32,7 +32,6 @@
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class report_benchmark {
-
     /**
      * benchmark results.
      *
@@ -51,7 +50,6 @@ class report_benchmark {
         $idtest = 0;
 
         foreach ($tests as $name) {
-
             ++$idtest;
 
             // Initialize and execute the test.
@@ -72,14 +70,13 @@ class report_benchmark {
                     'during'    => $stop,
                     'id'        => $idtest,
                     'class'     => $this->get_feedback_class($stop, $result['limit'], $result['over']),
-                    'name'      => get_string($name.'name', 'report_benchmark'),
-                    'info'      => get_string($name.'moreinfo', 'report_benchmark'),
+                    'name'      => get_string($name . 'name', 'report_benchmark'),
+                    'info'      => get_string($name . 'moreinfo', 'report_benchmark'),
                 ] + $result;
         }
 
         // Store all results.
         $this->results = $benchs;
-
     }
 
     /**
@@ -89,9 +86,7 @@ class report_benchmark {
      * @return array Test result
      */
     private function start_test($name) {
-
         return call_user_func(['report_benchmark_test', $name]);
-
     }
 
     /**
@@ -100,15 +95,14 @@ class report_benchmark {
      * @return array List of test
      */
     private function get_tests() {
-
         // Get the list of all static method in the class benchmark_test.
         $tests      = [];
-        $class      = new ReflectionClass(__CLASS__.'_test');
+        $class      = new ReflectionClass(__CLASS__ . '_test');
         $methods    = $class->getMethods(ReflectionMethod::IS_STATIC);
 
         // Check if the method is in the class benchmark_test.
         foreach ($methods as $method) {
-            if ($method->class == __CLASS__.'_test') {
+            if ($method->class == __CLASS__ . '_test') {
                 $tests[] = $method->name;
             }
         }
@@ -125,7 +119,6 @@ class report_benchmark {
      * @return string Get the class
      */
     private function get_feedback_class($during, $limit, $over) {
-
         if ($during >= $over) {
             $class = 'danger';
         } else if ($during >= $limit) {
@@ -134,7 +127,6 @@ class report_benchmark {
             $class = 'success';
         }
         return $class;
-
     }
 
     /**
@@ -143,9 +135,7 @@ class report_benchmark {
      * @return array Get the result of all tests
      */
     public function get_results() {
-
         return $this->results;
-
     }
 
     /**
@@ -154,7 +144,6 @@ class report_benchmark {
      * @return array Get the total time and score of all tests
      */
     public function get_total() {
-
         $total = 0;
 
         foreach ($this->results as $result) {
@@ -165,7 +154,5 @@ class report_benchmark {
             'total' => $total,
             'score' => ceil($total * 100),
         ];
-
     }
-
 }
