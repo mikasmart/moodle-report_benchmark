@@ -1,0 +1,14 @@
+# camp listing manifest — descriptive content for your plugin's page.
+# Edit freely and commit; camp ingests this file at each tagged release.
+# Schema: https://camp-registry.org/schema/listing.schema.json
+name: report_benchmark
+summary: Performs various performance checks to determine the quality of the Moodle platform.
+description: |
+  Performs various performance checks to determine the quality of the Moodle platform.
+labels:
+  - fully-free
+screenshots:
+  - path: .camp/screenshots/benchmark.png
+    caption: Report view
+links:
+  issues: https://github.com/mikasmart/moodle-report_benchmark/issues
