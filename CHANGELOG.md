@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/) and follow principles of [keep a changelog](https://keepachangelog.com).
 
+## Version v1.5.5, 2026-07-27
+- Benchmark plugin was tested successfully against Moodle versions up to 5.2+ (issue #46).
+- Add workflow for publication on https://camp-registry.org/ (commit 5b82922).
+
 ## Version v1.5.4, 2026-02-26
 - Benchmark plugin was tested successfully against Moodle versions up to 5.1+ (issue #44).
 - Fix coding style issues, following CI script update (commits 167834d and b8ffe09).
