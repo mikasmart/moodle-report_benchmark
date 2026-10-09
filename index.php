@@ -53,6 +53,10 @@ admin_externalpage_setup('reportbenchmark');
 $PAGE->set_url(new moodle_url('/report/benchmark/index.php'));
 $PAGE->set_pagelayout('report');
 
+if ($step) {
+    require_sesskey();
+}
+
 // Rendering.
 $output = $PAGE->get_renderer('report_benchmark');
 echo !$step ? $output->launcher() : $output->display();

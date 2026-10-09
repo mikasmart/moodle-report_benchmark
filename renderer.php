@@ -49,7 +49,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
         // Button to start the test.
         $out .= html_writer::start_div('continuebutton');
         $out .= html_writer::link(
-            new moodle_url('/report/benchmark/index.php', ['step' => 'run']),
+            new moodle_url('/report/benchmark/index.php', ['step' => 'run', 'sesskey' => sesskey()]),
             get_string('start', 'report_benchmark'),
             ['class' => 'btn btn-primary']
         );
@@ -203,7 +203,7 @@ class report_benchmark_renderer extends plugin_renderer_base {
         );
 
         $out .= html_writer::link(
-            new moodle_url('/report/benchmark/index.php', ['step' => 'run']),
+            new moodle_url('/report/benchmark/index.php', ['step' => 'run', 'sesskey' => sesskey()]),
             get_string('redo', 'report_benchmark'),
             ['class' => 'btn btn-primary']
         );
